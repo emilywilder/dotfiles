@@ -8,11 +8,8 @@ HISTSIZE=1000
 SAVEHIST=1000
 setopt shwordsplit
 setopt appendhistory
-#setopt extendedglob
 setopt incappendhistory
-#setopt bashautolist
 setopt noautomenu
-#setopt noalwayslastprompt
 
 bindkey -e
 
@@ -26,13 +23,9 @@ bindkey '\eOH' beginning-of-line
 bindkey '^[[4~' end-of-line
 bindkey '\eOF' end-of-line
 
-#eval `gdircolors`
 zstyle ':completion:*' list-colors ''
 zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
 
-#PROMPT="%{\e[1;32m%}%n@%m %{\e[1;37m%}%d%# %{\e[0m%}"
-#PROMPT="%n@%m [%?] %~%# "
-#PROMPT="$fg_bold[green]%n@%m [%?] $fg_bold[white]%~%# $reset_color"
 RPROMPT="[%?]"
 PROMPT="%{$fg_bold[green]%}%~
 %{$fg_bold[white]%}%n@%m %# %{$reset_color%}"
@@ -41,14 +34,8 @@ alias ll='ls -al'
 alias lsd='ls -al | grep ^d'
 alias vi='vim'
 alias diff='diff -u'
-alias python='/opt/local/bin/python2.7'
-alias svn='/opt/local/bin/svn'
 export PYTHONSTARTUP=~/.pythonrc.py
-export PATH=$PATH:~/bin:/opt/local/bin:/opt/local/sbin:/usr/local/mysql-5.1.53-osx10.6-x86_64/bin/
+export PATH=$PATH:~/bin
 export PAGER=less
 export EDITOR=vim
-export MANPATH=$MANPATH:/opt/local/share/man
 
-maintme() {
-    ssh -p20022 ct_maint@$*
-}
