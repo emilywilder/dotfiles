@@ -1,0 +1,36 @@
+" Basics {
+set background=dark " we plan to use a dark background
+syntax on " syntax highlighting on
+set t_Co=256
+colorscheme xoria256
+" }
+
+" General {
+set directory=~/.vim/tmp " directory to place swap files in
+set history=50
+" }
+
+" Modes {
+set autoindent
+"set paste
+" }
+
+" Vim UI {
+"set cursorline " highlight current line
+set incsearch "highlight as you type your search phrase
+"set number " turn on line numbers
+set ruler " Always show current positions along the bottom
+set scrolloff=5 " Keep x lines (top/bottom) for scope
+set showcmd " show the command being typed
+"highlight LineNr term=bold ctermbg=Black ctermfg=DarkGrey guifg=DarkGrey
+" }
+
+" Text Formatting/Layout {
+set expandtab " no real tabs please!
+set shiftround " when at 3 spaces, and I hit > ... go to 4, not 5
+set shiftwidth=4 " auto-indent amount when using cindent, " >>, << and stuff like that
+set tabstop=4 " real tabs should be 8, and they will show with set list on
+set backspace=indent,eol,start
+set tabstop=4
+set shiftwidth=4
+" }
