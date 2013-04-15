@@ -19,7 +19,7 @@ $(HOME)/.vimrc!
 $(HOME)/.vim/colors:
 	mkdir -p $@
 
-$(HOME)/.vim/colors/xoria256.vim!
+$(HOME)/.vim/colors/xoria256.vim! $(HOME)/.vim/colors
 	install vim/colors/xoria256.vim $@
 
 $(HOME)/.pythonrc.py!
