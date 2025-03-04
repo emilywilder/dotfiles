@@ -11,6 +11,7 @@ setopt shwordsplit
 setopt appendhistory
 setopt incappendhistory
 setopt noautomenu
+setopt prompt_subst
 
 bindkey -e
 
@@ -34,8 +35,8 @@ precmd_vcs_info() { vcs_info }
 precmd_functions+=( precmd_vcs_info )
 
 RPROMPT='[%?]'
-PROMPT='%{$fg_bold[green]%}%~ %{$fg[cyan]%}${vcs_info_msg_0_}
-%{$fg_bold[white]%}%n@%m %# %{$reset_color%}'
+PROMPT='%B%F{green}%~%f %B%F{cyan}${vcs_info_msg_0_}%f
+%F{white}%n@%m %# %f%b'
 
 alias ll='ls -al'
 alias lsd='ls -al | grep ^d'
