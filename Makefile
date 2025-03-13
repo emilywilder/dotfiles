@@ -5,7 +5,8 @@ VIMCOLORS!=	find vim/colors -type f
 
 all: $(HOME)/.zshrc \
 	$(HOME)/.vimrc \
-	$(HOME)/.pythonrc.py
+	$(HOME)/.pythonrc.py \
+	$(HOME)/.gitconfig
 
 $(HOME)/.zshrc! $(HOME)/.vim/tmp $(HOME)/.vim/colors/xoria256.vim
 	install zsh/zshrc $@
