@@ -4,27 +4,31 @@ HOME?=	/root
 VIMCOLORS!=	find vim/colors -type f
 
 all: $(HOME)/.zshrc \
-	$(HOME)/.vimrc \
+	$(HOME)/.vim/vimrc \
+	$(HOME)/.vim/colors/xoria256.vim \
 	$(HOME)/.pythonrc.py \
 	$(HOME)/.gitconfig
 
-$(HOME)/.zshrc: $(HOME)/.vim/tmp $(HOME)/.vim/colors/xoria256.vim
-	install zsh/zshrc $@
+$(HOME)/.zshrc:
+	install zsh/.zshrc $@
 
-$(HOME)/.vim/tmp:
+$(HOME)/.vim:
 	mkdir -p $@
 
-$(HOME)/.vimrc:
-	install vim/vimrc $@
+$(HOME)/.vim/tmp: $(HOME)/.vim
+	mkdir -p $@
 
-$(HOME)/.vim/colors:
+$(HOME)/.vim/vimrc: $(HOME)/.vim
+	install vim/.vim/vimrc $@
+
+$(HOME)/.vim/colors: $(HOME)/.vim
 	mkdir -p $@
 
 $(HOME)/.vim/colors/xoria256.vim: $(HOME)/.vim/colors
-	install vim/colors/xoria256.vim $@
+	install vim/.vim/colors/xoria256.vim $@
 
 $(HOME)/.pythonrc.py:
-	install python/pythonrc.py $@
+	install python/.pythonrc.py $@
 
 $(HOME)/.gitconfig:
-	install git/gitconfig $@
+	install git/.gitconfig $@
