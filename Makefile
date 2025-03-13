@@ -1,7 +1,7 @@
 # deploy custom dotfiles to the current user's HOMEDIR
 
 HOME?=	/root
-VIMCOLORS!=	find vim/colors -type f
+VIMCOLORS!=	find vim/.vim/colors -type f
 
 all: $(HOME)/.zshrc \
 	$(HOME)/.vim/vimrc \
