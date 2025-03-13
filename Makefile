@@ -32,3 +32,9 @@ $(HOME)/.pythonrc.py:
 
 $(HOME)/.gitconfig:
 	install git/.gitconfig $@
+
+stow:
+	@stow --verbose --target=$(HOME) --restow */
+
+unstow:
+	@stow --verbose --target=$(HOME) --delete */
