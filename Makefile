@@ -8,23 +8,23 @@ all: $(HOME)/.zshrc \
 	$(HOME)/.pythonrc.py \
 	$(HOME)/.gitconfig
 
-$(HOME)/.zshrc! $(HOME)/.vim/tmp $(HOME)/.vim/colors/xoria256.vim
+$(HOME)/.zshrc: $(HOME)/.vim/tmp $(HOME)/.vim/colors/xoria256.vim
 	install zsh/zshrc $@
 
 $(HOME)/.vim/tmp:
 	mkdir -p $@
 
-$(HOME)/.vimrc!
+$(HOME)/.vimrc:
 	install vim/vimrc $@
 
 $(HOME)/.vim/colors:
 	mkdir -p $@
 
-$(HOME)/.vim/colors/xoria256.vim! $(HOME)/.vim/colors
+$(HOME)/.vim/colors/xoria256.vim: $(HOME)/.vim/colors
 	install vim/colors/xoria256.vim $@
 
-$(HOME)/.pythonrc.py!
+$(HOME)/.pythonrc.py:
 	install python/pythonrc.py $@
 
-$(HOME)/.gitconfig!
+$(HOME)/.gitconfig:
 	install git/gitconfig $@
