@@ -25,3 +25,5 @@ $(HOME)/.vim/colors/xoria256.vim! $(HOME)/.vim/colors
 $(HOME)/.pythonrc.py!
 	install python/pythonrc.py $@
 
+$(HOME)/.gitconfig!
+	install git/gitconfig $@

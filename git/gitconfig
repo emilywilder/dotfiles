@@ -1,0 +1,12 @@
+[filter "lfs"]
+	required = true
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+[user]
+	name = Emily Lockhart
+	email = validitymaiden@gmail.com
+[init]
+	defaultBranch = main
+[commit]
+    verbose = true
