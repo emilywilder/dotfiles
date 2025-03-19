@@ -48,3 +48,13 @@ export PATH=$PATH:~/bin
 export PAGER=less
 export EDITOR=vim
 
+# MacPorts Installer addition on 2020-12-07_at_11:56:46: adding an appropriate PATH variable for use with MacPorts.
+export PATH="/opt/local/bin:/opt/local/sbin:$PATH"
+# Finished adapting your PATH environment variable for use with MacPorts.
+
+# MacPorts Installer addition on 2020-12-07_at_11:56:46: adding an appropriate DISPLAY variable for use with MacPorts.
+export DISPLAY=:0
+# Finished adapting your DISPLAY environment variable for use with MacPorts.
+
+# Added by Toolbox App
+export PATH="$PATH:/Users/emily/Library/Application Support/JetBrains/Toolbox/scripts"
