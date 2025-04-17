@@ -40,6 +40,7 @@ PROMPT='%B%F{green}%~%f %B%F{cyan}${vcs_info_msg_0_}%f
 
 alias ll='ls -al'
 alias lsd='ls -al | grep ^d'
+alias paths='echo $PATH | tr ":" "\n" | sort'
 alias vi='vim'
 alias diff='diff -u --color'
 alias gittree='git log --graph --full-history --all --color --pretty=format:"%x1b[31m%h%x09%x1b[32m%d%x1b[0m%x20%s"'
@@ -58,3 +59,6 @@ export DISPLAY=:0
 
 # Added by Toolbox App
 export PATH="$PATH:/Users/emily/Library/Application Support/JetBrains/Toolbox/scripts"
+
+# nix
+export PATH=$HOME/.nix-profile/bin:/nix/var/nix/profiles/default/bin:$PATH
