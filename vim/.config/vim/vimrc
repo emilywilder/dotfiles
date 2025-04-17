@@ -56,7 +56,7 @@ colorscheme xoria256
 " }
 
 " General {
-set directory=~/.vim/tmp " directory to place swap files in
+set directory=${XDG_CONFIG_HOME}/vim/tmp " directory to place swap files in
 set history=50
 " }
 
