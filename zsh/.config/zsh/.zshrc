@@ -42,9 +42,4 @@ RPROMPT='[%?]'
 PROMPT='%B%F{green}%~%f %B%F{cyan}${vcs_info_msg_0_}%f
 %F{white}%n@%m %# %f%b'
 
-alias ll='ls -al'
-alias lsd='ls -al | grep ^d'
-alias paths='echo $PATH | tr ":" "\n"'
-alias vi='vim'
-alias diff='diff -u --color'
-alias gittree='git log --graph --full-history --all --color --pretty=format:"%x1b[31m%h%x09%x1b[32m%d%x1b[0m%x20%s"'
+source $ZDOTDIR/aliases.zsh
