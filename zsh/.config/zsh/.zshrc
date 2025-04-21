@@ -17,7 +17,11 @@ setopt PROMPT_SUBST
 # commands to be appended to the history file, and new shells read history
 setopt SHARE_HISTORY
 
+# emacs editing mode
 bindkey -e
+
+# completion
+# TODO: which parts of macOS can be sources?
 
 bindkey "$(echotc kl)" backward-char
 bindkey "$(echotc kr)" forward-char
