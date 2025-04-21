@@ -4,7 +4,8 @@ autoload -U colors
 colors
 autoload -U vcs_info
 
-HISTFILE=~/.histfile
+# History
+HISTFILE=$ZDOTDIR/.zhistory
 HISTSIZE=1000
 SAVEHIST=1000
 
