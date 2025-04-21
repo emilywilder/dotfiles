@@ -46,4 +46,6 @@ RPROMPT='[%?]'
 PROMPT='%B%F{green}%~%f %B%F{cyan}${vcs_info_msg_0_}%f
 %F{white}%n@%m %# %f%b'
 
+#TODO: make these platform specific
 source $ZDOTDIR/aliases.zsh
+source $ZDOTDIR/functions.zsh
