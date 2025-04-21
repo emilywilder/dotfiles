@@ -1,6 +1,7 @@
 # set python startup file
 export PYTHONSTARTUP=${XDG_CONFIG_HOME}/python/pythonrc.py
 
+#TODO: make this platform specific
 path=(
     # home/bin
     ${HOME}/bin
@@ -19,5 +20,6 @@ path=(
 # export path for child processes
 export PATH
 
+#TODO: make this depend on MacPorts being used
 # for MacPorts Xorg
 export DISPLAY=:0
