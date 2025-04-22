@@ -13,7 +13,9 @@ setopt PROMPT_SUBST
 setopt SHARE_HISTORY
 
 # Completion
-autoload compinit
+# invocation as per the INITIALIZATION section of the
+# zshcompsys man page
+autoload -U compinit
 compinit
 ## TODO: which parts of macOS can be sources?
 
