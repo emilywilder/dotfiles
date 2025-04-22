@@ -11,3 +11,8 @@ bindkey -e
 #bindkey '\eOH' beginning-of-line
 #bindkey '^[[4~' end-of-line
 #bindkey '\eOF' end-of-line
+
+# CTRL-left and CTRL-right moving by word
+# may be macOS specific
+bindkey '^[[1;5D' emacs-backward-word
+bindkey '^[[1;5C' emacs-forward-word
