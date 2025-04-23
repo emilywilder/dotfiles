@@ -8,7 +8,6 @@ esac
 for _prog in git python; do
     if which ${_prog} >/dev/null; then
         source $ZDOTDIR/functions.${_prog}.zsh
-        echo "Locded functions.${_prog}"
     fi
 done
 # check for machine specific functions
