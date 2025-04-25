@@ -1,7 +1,7 @@
 # History
 HISTFILE=$ZDOTDIR/.zhistory
-HISTSIZE=1000
-SAVEHIST=1000
+HISTSIZE=12000
+SAVEHIST=10000
 
 # Options
 ## don't cycle through options
