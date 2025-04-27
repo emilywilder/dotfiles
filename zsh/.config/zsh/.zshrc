@@ -19,6 +19,10 @@ autoload -U compinit
 compinit
 ## TODO: which parts of macOS can be sources?
 
+# FIXME: only works for linux. make portable
+# set LS_COLORS
+eval $(dircolors $ZDOTDIR/dircolors.256color)
+
 # Sources
 source $ZDOTDIR/prompt.zsh
 source $ZDOTDIR/keybindings.zsh
