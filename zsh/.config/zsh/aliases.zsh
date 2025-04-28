@@ -1,5 +1,5 @@
 alias ll='ls -al'
-alias lsd='ls -al | grep ^d'
+alias lsd='ll | grep ^d'
 alias paths='echo ${PATH//:/\\n}'
 alias vi='vim'
 alias diff='diff -u --color'
