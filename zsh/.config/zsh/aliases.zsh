@@ -1,3 +1,4 @@
+alias ls='ls --color'
 alias ll='ls -al'
 alias lsd='ll | grep ^d'
 alias paths='echo ${PATH//:/\\n}'
