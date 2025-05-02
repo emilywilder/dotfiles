@@ -9,6 +9,8 @@ export XDG_CONFIG_HOME="$HOME/.config"
 #   current state of the application that can be reused on a restart
 #       (view, layout, open files, undo history, …)
 export XDG_STATE_HOME="$HOME/.local/state"
+# user-specific non-essential data files
+export XDG_CACHE_HOME="$HOME/.cache"
 
 # zsh specific
 export ZDOTDIR="$XDG_CONFIG_HOME/zsh"

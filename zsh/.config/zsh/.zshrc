@@ -16,7 +16,7 @@ setopt SHARE_HISTORY
 # invocation as per the INITIALIZATION section of the
 # zshcompsys man page
 autoload -U compinit
-compinit
+compinit -d $XDG_CACHE_HOME/zsh/compdump
 ## TODO: which parts of macOS can be sources?
 
 # Sources
