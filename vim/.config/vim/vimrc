@@ -1,4 +1,5 @@
-" from https://sw.kovidgoyal.net/kitty/faq/#using-a-color-theme-with-a-background-color-does-not-work-well-in-vim {
+" kitty terminal support {
+" from https://sw.kovidgoyal.net/kitty/faq/#using-a-color-theme-with-a-background-color-does-not-work-well-in-vim
 " Mouse support
 set mouse=a
 set ttymouse=sgr
@@ -46,24 +47,24 @@ let &t_RT = "\e[23;2t"
 " using a color theme with a background color in terminals such as
 " kitty that do not support background color erase.
 let &t_ut=''
-" }
+" } // kitty terminal support
 
 " Basics {
 set background=dark " we plan to use a dark background
 syntax on " syntax highlighting on
 set t_Co=256
 colorscheme xoria256
-" }
+" } // Basics
 
 " General {
 set directory=${XDG_CONFIG_HOME}/vim/tmp " directory to place swap files in
 set history=50
-" }
+" } // General
 
 " Modes {
 set autoindent
 "set paste
-" }
+" } // Modes
 
 " Vim UI {
 "set cursorline " highlight current line
@@ -73,7 +74,7 @@ set ruler " Always show current positions along the bottom
 set scrolloff=5 " Keep x lines (top/bottom) for scope
 set showcmd " show the command being typed
 "highlight LineNr term=bold ctermbg=Black ctermfg=DarkGrey guifg=DarkGrey
-" }
+" } // Vim UI
 
 " Text Formatting/Layout {
 set expandtab " no real tabs please!
@@ -83,4 +84,4 @@ set tabstop=4 " real tabs should be 8, and they will show with set list on
 set backspace=indent,eol,start
 set tabstop=4
 set shiftwidth=4
-" }
+" } // Text Formatting/Layout
