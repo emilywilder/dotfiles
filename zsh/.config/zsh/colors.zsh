@@ -9,5 +9,5 @@ export CLICOLOR
 
 # set and export LS_COLORS with dircolors if available
 if which dircolors >/dev/null; then
-    eval $(dircolors $ZDOTDIR/dircolors.256color)
+    eval $(dircolors $ZDOTDIR/emily256.dircolors)
 fi
