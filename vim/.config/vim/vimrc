@@ -85,3 +85,8 @@ set backspace=indent,eol,start
 set tabstop=4
 set shiftwidth=4
 " } // Text Formatting/Layout
+
+" Syntax Highlighting by File Extension {
+" set dircolors file to use the appropriate syntax highlighting
+au BufRead,BufNewFile *.dircolors setfiletype dircolors
+" } // Syntax Highlighting by File Extension
