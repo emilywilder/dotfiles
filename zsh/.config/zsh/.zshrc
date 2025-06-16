@@ -26,3 +26,4 @@ source $ZDOTDIR/keybindings.zsh
 source $ZDOTDIR/aliases.zsh
 source $ZDOTDIR/functions.zsh
 source $ZDOTDIR/colors.zsh
+source $ZDOTDIR/direnv.zsh
