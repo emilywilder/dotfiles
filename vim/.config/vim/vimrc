@@ -53,7 +53,6 @@ let &t_ut=''
 set background=dark " we plan to use a dark background
 syntax on " syntax highlighting on
 set t_Co=256
-colorscheme xoria256
 " } // Basics
 
 " General {
