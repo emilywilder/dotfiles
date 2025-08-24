@@ -1,3 +1,6 @@
+# Profiling
+# zmodload zsh/zprof
+
 # History
 HISTFILE=$XDG_STATE_HOME/zsh/history
 HISTSIZE=12000
@@ -27,3 +30,6 @@ source $ZDOTDIR/aliases.zsh
 source $ZDOTDIR/functions.zsh
 source $ZDOTDIR/colors.zsh
 source $ZDOTDIR/direnv.zsh
+
+# Profiling
+# zprof
