@@ -1,0 +1,10 @@
+nix-deps() {
+    if [ $# -eq 1 ]; then
+        nix derivation show $1 |
+            jq -r '.[].inputDrvs | keys.[] |
+                match(".*?-(.*)\\.drv"; "g").captures[0].string'
+    else
+        echo "usage: ${funcstack[-1]} <packageName>" >&2
+        return 1
+    fi
+}
