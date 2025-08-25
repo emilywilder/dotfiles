@@ -5,7 +5,7 @@ case "${OSTYPE}" in
     ;;
 esac
 # check that these programs exist before loading their functions
-for _prog in git python; do
+for _prog in git python nix; do
     if which ${_prog} >/dev/null; then
         source $ZDOTDIR/functions.${_prog}.zsh
     fi
