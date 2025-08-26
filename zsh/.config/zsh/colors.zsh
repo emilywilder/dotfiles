@@ -12,8 +12,13 @@ if which dircolors >/dev/null; then
     eval $(dircolors $ZDOTDIR/emily256.dircolors)
 fi
 
-# on macOS eza sets the config dir to ~/Library/Application Support/eza
-# force to use XDG for all platforms
+# eza
 if which eza >/dev/null; then
+    # on macOS eza sets the config dir to ~/Library/Application Support/eza
+    # force to use XDG for all platforms
     export EZA_CONFIG_DIR="$XDG_CONFIG_HOME/eza"
+    # ignore LS_COLORS when using a theme
+    if [ -f ${EZA_CONFIG_DIR}/theme.yml ]; then
+        unset LS_COLORS
+    fi
 fi
