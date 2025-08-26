@@ -2,7 +2,7 @@ if which eza >/dev/null; then
     alias ls='eza --icons --hyperlink'
     alias ll='ls -l --git -M'
     alias lsd='ll -D'
-    alias lss='ll --sort=size --color-scale'
+    alias lss='ll --sort=size --color-scale=size'
 else
     alias ls='ls --color'
     alias ll='ls -lh'
