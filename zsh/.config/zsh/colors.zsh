@@ -11,3 +11,9 @@ export CLICOLOR
 if which dircolors >/dev/null; then
     eval $(dircolors $ZDOTDIR/emily256.dircolors)
 fi
+
+# on macOS eza sets the config dir to ~/Library/Application Support/eza
+# force to use XDG for all platforms
+if which eza >/dev/null; then
+    export EZA_CONFIG_DIR="$XDG_CONFIG_HOME/eza"
+fi
