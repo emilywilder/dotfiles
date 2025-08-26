@@ -1,5 +1,5 @@
 if which eza >/dev/null; then
-    alias ls='eza --icons --color-scale --color-scale-mode=gradient --hyperlink'
+    alias ls='eza --icons --hyperlink'
     alias ll='ls -l --git -M'
     alias lsd='ll -D'
 else
