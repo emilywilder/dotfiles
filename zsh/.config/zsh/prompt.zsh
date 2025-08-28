@@ -11,4 +11,4 @@ precmd_functions+=( precmd_vcs_info )
 
 RPROMPT='[%?]'
 PROMPT='%B%F{green}%~%f %B%F{cyan}${vcs_info_msg_0_}%f
-%F{white}%n@%m %# %f%b'
+%(2L.(${SHLVL}) .)%F{white}%n@%m %# %f%b'
