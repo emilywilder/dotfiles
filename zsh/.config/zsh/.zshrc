@@ -30,6 +30,7 @@ source $ZDOTDIR/aliases.zsh
 source $ZDOTDIR/functions.zsh
 source $ZDOTDIR/colors.zsh
 source $ZDOTDIR/direnv.zsh
+source $ZDOTDIR/atuin.zsh
 
 # Profiling
 # zprof
