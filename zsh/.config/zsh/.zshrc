@@ -2,7 +2,7 @@
 # zmodload zsh/zprof
 
 # History
-HISTFILE=$XDG_STATE_HOME/zsh/history
+export HISTFILE=$XDG_STATE_HOME/zsh/history
 HISTSIZE=12000
 SAVEHIST=10000
 
