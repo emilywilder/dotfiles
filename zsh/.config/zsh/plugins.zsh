@@ -4,3 +4,5 @@ if which fzf >/dev/null; then
     # preview directory's content with eza when completing cd
     zstyle ':fzf-tab:complete:cd:*' fzf-preview 'eza --icons=always --width=1 --color=always $realpath'
 fi
+
+source $ZDOTDIR/plugins/zsh-functional/functional.plugin.zsh
