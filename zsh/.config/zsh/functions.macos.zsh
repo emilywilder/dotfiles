@@ -1,7 +1,11 @@
-attachiso() {
-    hdiutil attach -imagekey diskimage-class=CRawDiskImage -nomount $1
-}
+#!/bin/zsh
 
-dequarantine() {
-    [ -n "$1" ] && find "$1" -type f -xattrname com.apple.quarantine -exec xattr -d com.apple.quarantine {} \; -print
-}
+ZSH_FUNCTIONS_BASEDIR=$0:h/functions
+fpath+=($ZSH_FUNCTIONS_BASEDIR)
+
+FUNCTIONS=(attachiso dequarantine)
+
+# Load functions
+for _f in ${ZSH_FUNCTIONS_BASEDIR}/${FUNCTIONS}; do
+    autoload ${_f}
+done
