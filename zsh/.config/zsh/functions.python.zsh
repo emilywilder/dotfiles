@@ -1,11 +1,11 @@
-python_ensurepip() {
-    python -m ensurepip --default-pip --user
-}
+#!/bin/zsh
 
-pip_updateall() {
-    echo "Finding out of date packages in pip..."
-    pip list -o --format json | jq '.[].name' -r | while read a ; do
-        echo "Installing $a..."
-        pip install -U $a
-    done
-}
+ZSH_FUNCTIONS_BASEDIR=$0:h/functions
+fpath+=($ZSH_FUNCTIONS_BASEDIR)
+
+FUNCTIONS=(python_ensurepip pip_updateall)
+
+# Load functions
+for _f in ${ZSH_FUNCTIONS_BASEDIR}/${FUNCTIONS}; do
+    autoload ${_f}
+done

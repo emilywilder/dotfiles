@@ -1,0 +1,7 @@
+#!/bin/zsh
+
+echo "Finding out of date packages in pip..."
+pip list -o --format json | jq '.[].name' -r | while read a ; do
+    echo "Installing $a..."
+    pip install -U $a
+done
