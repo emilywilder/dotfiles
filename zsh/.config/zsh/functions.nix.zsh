@@ -18,3 +18,15 @@ nix-get-pname() {
         return 1
     fi
 }
+
+nix-get-flake-outpaths() {
+    if [ $# -eq 1 ]; then
+        local _dir
+        if _dir="$(nix build "${1}" --print-out-paths --no-link)"; then
+            find "$_dir"
+        fi
+    else
+        echo "usage: ${funcstack[-1]} <nixpkgs#name>" >&2
+        return 1
+    fi
+}
