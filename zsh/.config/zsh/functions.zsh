@@ -1,6 +1,12 @@
 ZSH_FUNCTIONS_BASEDIR=$0:h/functions
 fpath+=($ZSH_FUNCTIONS_BASEDIR)
 
+supported_programs=(
+    git
+    nix
+    python
+)
+
 _functions_athena=(zebesmount)
 _functions_git=(packsources gittree)
 _functions_macos=(attachiso dequarantine)
@@ -17,7 +23,7 @@ case "${OSTYPE}" in
 esac
 
 # check that these programs exist before loading their functions
-for _prog in git python nix; do
+for _prog in $supported_programs; do
     if which ${_prog} >/dev/null; then
         # construct variable expansion necessary to reference the array
         # specific to the iterated program
