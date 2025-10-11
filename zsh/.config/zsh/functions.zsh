@@ -8,43 +8,43 @@ fpath+=($ZSH_FUNCTIONS_BASEDIR)
         python
     )
 
-    readonly _functions_athena=(zebesmount)
-    readonly _functions_git=(packsources gittree)
-    readonly _functions_macos=(attachiso dequarantine)
-    readonly _functions_nix=(nix-deps nix-get-pname nix-get-flake-outpaths)
-    readonly _functions_python=(python_ensurepip pip_updateall)
+    readonly functions_athena=(zebesmount)
+    readonly functions_git=(packsources gittree)
+    readonly functions_macos=(attachiso dequarantine)
+    readonly functions_nix=(nix-deps nix-get-pname nix-get-flake-outpaths)
+    readonly functions_python=(python_ensurepip pip_updateall)
 
-    local _functions_to_load=()
+    local functions_to_load=()
 
     # check for OS specific functions
     case "${OSTYPE}" in
         darwin*)
-            _functions_to_load+=(${(A)_functions_macos})
+            functions_to_load+=(${(A)functions_macos})
         ;;
     esac
 
     # check that these programs exist before loading their functions
-    local _prog
-    for _prog in $supported_programs; do
-        if which ${_prog} >/dev/null; then
+    local _program
+    for _program in $supported_programs; do
+        if which ${_program} >/dev/null; then
             # construct variable expansion necessary to reference the array
             # specific to the iterated program
-            local _varname="\${(A)_functions_$_prog}"
+            local _varname="\${(A)_functions_$_program}"
             # use eval to dereference the constructed variable
-            _functions_to_load+=($(eval echo $_varname))
+            functions_to_load+=($(eval echo $_varname))
         fi
     done
 
     # check for machine specific functions
     case "$(hostname -s)" in
         athena)
-            _functions_to_load+=(${(A)_functions_athena})
+            functions_to_load+=(${(A)functions_athena})
         ;;
     esac
 
     # Load functions
-    local _f
-    for _f in ${ZSH_FUNCTIONS_BASEDIR}/${_functions_to_load}; do
-        autoload ${_f}
+    local _function
+    for _function in ${ZSH_FUNCTIONS_BASEDIR}/${functions_to_load}; do
+        autoload ${_function}
     done
 }
