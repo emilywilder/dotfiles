@@ -6,7 +6,7 @@ default:
 
 [doc("add packages to $HOME")]
 stow:
-    @ stow --verbose --target="${HOME}" --restow */
+    @stow --verbose --target="${HOME}" --restow */
 
 [doc("remove packages from $HOME")]
 unstow:
