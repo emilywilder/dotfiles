@@ -6,10 +6,10 @@ set windows-shell := ["pwsh.exe", "-NoLogo", "-Command"]
 default:
     @just --list
 
-[doc("add packages to $HOME")]
-stow:
+[doc("stow packages to $HOME")]
+install:
     @stow --verbose --target="${HOME}" --restow */
 
-[doc("remove packages from $HOME")]
-unstow:
+[doc("unstow packages from $HOME")]
+uninstall:
     @stow --verbose --target="${HOME}" --delete */
