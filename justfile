@@ -1,5 +1,7 @@
 #!/usr/bin/env just --justfile
 
+set windows-shell := ["pwsh.exe", "-NoLogo", "-Command"]
+
 [private]
 default:
     @just --list
