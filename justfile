@@ -11,13 +11,13 @@ default:
 
 [unix]
 [doc("stow packages to $HOME")]
-install:
-    @stow --verbose --target="${HOME}" --restow */
+install +FILES="*/":
+    @stow --verbose --target="${HOME}" --restow {{FILES}}
 
 [unix]
 [doc("unstow packages from $HOME")]
-uninstall:
-    @stow --verbose --target="${HOME}" --delete */
+uninstall +FILES="*/":
+    @stow --verbose --target="${HOME}" --delete {{FILES}}
 
 [windows]
 [doc("Copy-Item <powershell_profile> to $PROFILE")]
