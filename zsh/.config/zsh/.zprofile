@@ -14,8 +14,6 @@ if [[ "${OSTYPE}" =~ "darwin*" ]]; then
         /opt/local/bin
         /opt/local/sbin
     )
-    # for MacPorts Xorg
-    export DISPLAY=:0
 fi
 
 path=(
