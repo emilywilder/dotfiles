@@ -8,10 +8,10 @@ fpath+=($ZSH_FUNCTIONS_BASEDIR)
         python
     )
 
-    readonly functions_athena=(zebesmount)
+    readonly functions_athena=(zebesmount bootstrap-nix)
     readonly functions_git=(packsources gittree)
-    readonly functions_macos=(attachiso dequarantine)
-    readonly functions_nix=(nix-deps nix-get-pname nix-get-flake-outpaths)
+    readonly functions_macos=(attachiso dequarantine plist2jq)
+    readonly functions_nix=(nix-deps nix-get-pname nix-get-flake-outpaths nix-search-names)
     readonly functions_python=(python_ensurepip pip_updateall)
 
     local functions_to_load=()

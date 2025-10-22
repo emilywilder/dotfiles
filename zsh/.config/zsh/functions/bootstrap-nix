@@ -1,0 +1,3 @@
+#!/bin/zsh
+
+sudo launchctl bootstrap system /Library/LaunchDaemons/org.nixos.nix-daemon.plist
