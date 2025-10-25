@@ -1,3 +1,7 @@
+# .zshenv → [.zprofile] → .zshrc → .zlogin → .zlogout
+# :: Configuration for login shells
+# > path variables
+
 # home bin
 _path=(
     # home/bin

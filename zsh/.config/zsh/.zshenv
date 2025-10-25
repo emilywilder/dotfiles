@@ -1,3 +1,9 @@
+# [.zshenv] → .zprofile → .zshrc → .zlogin → .zlogout
+# :: Configuration for all shells
+# > XDG_* and ZDOTDIR env vars
+# > PAGER and EDITOR env vars
+# > umask
+
 # XDG BDS: https://specifications.freedesktop.org/basedir-spec/latest/
 # user-specific data files
 export XDG_DATA_HOME="$HOME/.local/share"

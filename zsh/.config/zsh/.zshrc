@@ -1,3 +1,9 @@
+# .zshenv → .zprofile → [.zshrc] → .zlogin → .zlogout
+# :: Configuration for interactive shells
+# > ZSH settings
+# > Sourcing of all ZSH modules
+# > [Optional] profiling
+
 # Profiling
 # zmodload zsh/zprof
 
