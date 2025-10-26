@@ -14,6 +14,5 @@
 	gpgsign = true
 [gpg]
 	format = ssh
-[gpg "ssh"]
-	program = /Applications/1Password.app/Contents/MacOS/op-ssh-sign
-	allowedSignersFile = /Users/emily/.config/git/allowed_signers
+[include]
+    path = local.config
