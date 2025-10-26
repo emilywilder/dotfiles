@@ -2,8 +2,8 @@
 
 set windows-shell := ["pwsh.exe", "-NoLogo", "-Command"]
 
-powershell_config_path := join(justfile_directory(), "powershell", ".config", "powershell")
-powershell_profile := join(powershell_config_path, "Microsoft.PowerShell_profile.ps1")
+# variables specific to windows, but just doesn't seem to allow for importing conditionally
+import 'windows.env.just'
 
 [private]
 default:
@@ -20,11 +20,11 @@ uninstall +FILES="*/":
     @stow --verbose --target="${HOME}" --delete {{FILES}}
 
 [windows]
-[doc("Copy-Item <powershell_profile> to $PROFILE")]
+[doc("Install PowerShell PROFILE")]
 install:
-    Copy-Item -Path {{powershell_profile}} -Destination $PROFILE
+    Copy-Item -Path {{POWERSHELL_CONFIG_PATH}} -Destination {{POWERSHELL_INSTALL_PATH}}
 
 [windows]
-[doc("Remove-Item $PROFILE")]
+[doc("Uninstall PowerShell PROFILE")]
 uninstall:
-    Remove-Item -Path $PROFILE
+    Remove-Item -Path {{POWERSHELL_INSTALL_PATH}}
