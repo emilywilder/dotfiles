@@ -38,6 +38,7 @@ source $ZDOTDIR/colors.zsh
 source $ZDOTDIR/direnv.zsh
 source $ZDOTDIR/atuin.zsh
 source $ZDOTDIR/plugins.zsh
+source $ZDOTDIR/wsl.zsh
 
 # Profiling
 # zprof
