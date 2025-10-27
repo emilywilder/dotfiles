@@ -31,7 +31,7 @@ fpath+=($ZSH_FUNCTIONS_BASEDIR)
         if which ${_program} >/dev/null; then
             # construct variable expansion necessary to reference the array
             # specific to the iterated program
-            local _varname="\${(A)_functions_$_program}"
+            local _varname="\${(A)functions_$_program}"
             # use eval to dereference the constructed variable
             functions_to_load+=($(eval echo $_varname))
         fi
