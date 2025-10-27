@@ -1,0 +1,6 @@
+# zsh runtime files
+/zsh/.config/zsh/.zcompdump
+/zsh/.cache/*
+/zsh/.local/state/*
+# installation specific link
+/git/.config/git/local.config
