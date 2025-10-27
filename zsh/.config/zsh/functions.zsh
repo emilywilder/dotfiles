@@ -1,6 +1,8 @@
 ZSH_FUNCTIONS_BASEDIR=$0:h/functions
 fpath+=($ZSH_FUNCTIONS_BASEDIR)
 
+# find and set for autoload all appropriate functions
+# this is done in an anonymous function to not pollute the shell namespace
 () {
     readonly supported_programs=(
         git
