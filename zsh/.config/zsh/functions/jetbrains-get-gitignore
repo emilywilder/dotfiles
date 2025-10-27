@@ -1,0 +1,4 @@
+#!/bin/zsh
+
+URL="https://raw.githubusercontent.com/github/gitignore/refs/heads/main/Global/JetBrains.gitignore"
+curl ${URL}
