@@ -3,4 +3,7 @@
 # > environment variables for applications that don't need their own module
 #   and need to be interactive
 
-export LESS='-R'
+# PAGER
+# -F or --quit-if-one-screen
+# -R or --RAW-CONTROL-CHARS
+export LESS='-FR'
