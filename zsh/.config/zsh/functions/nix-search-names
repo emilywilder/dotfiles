@@ -1,3 +1,3 @@
 #!/bin/zsh
 
-nix search nixpkgs ${*} -e '^legacyPackages.*Packages'
+nix search nixpkgs ${*} -e '^legacyPackages.*(Packages|Plugins)'
