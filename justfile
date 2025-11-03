@@ -1,6 +1,7 @@
 #!/usr/bin/env just --justfile
 
 set windows-shell := ["pwsh.exe", "-NoLogo", "-Command"]
+set shell := ["zsh", "-cu"]
 
 # for [script] and which()
 set unstable
