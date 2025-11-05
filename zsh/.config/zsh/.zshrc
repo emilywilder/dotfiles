@@ -40,6 +40,7 @@ source $ZDOTDIR/atuin.zsh
 source $ZDOTDIR/plugins.zsh
 source $ZDOTDIR/wsl.zsh
 source $ZDOTDIR/just.zsh
+source $ZDOTDIR/glow.zsh
 
 # Profiling
 # zprof
