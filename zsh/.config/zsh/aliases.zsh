@@ -1,5 +1,5 @@
 if which eza >/dev/null; then
-    alias ls='eza --icons --hyperlink'
+    alias ls='eza --icons'
     alias ll='ls -l --git -M'
     alias lsd='ll -D'
     alias lsss='ll --sort=size --color-scale=size'
