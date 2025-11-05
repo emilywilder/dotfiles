@@ -39,6 +39,7 @@ source $ZDOTDIR/direnv.zsh
 source $ZDOTDIR/atuin.zsh
 source $ZDOTDIR/plugins.zsh
 source $ZDOTDIR/wsl.zsh
+source $ZDOTDIR/just.zsh
 
 # Profiling
 # zprof
