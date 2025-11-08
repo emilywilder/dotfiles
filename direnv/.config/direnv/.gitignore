@@ -1,1 +1,2 @@
-lib/
+# installed by nix
+lib/hm-nix-direnv.sh
