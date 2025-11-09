@@ -5,4 +5,4 @@ if which fzf >/dev/null; then
     zstyle ':fzf-tab:complete:cd:*' fzf-preview 'eza --icons=always --width=1 --color=always $realpath'
 fi
 
-#source $ZDOTDIR/plugins/zsh-functional/functional.plugin.zsh
+source $ZDOTDIR/plugins/zsh-functional/functional.plugin.zsh
