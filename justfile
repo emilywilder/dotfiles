@@ -29,3 +29,6 @@ install:
 [doc("Uninstall PowerShell PROFILE")]
 uninstall:
     Remove-Item -Path {{POWERSHELL_INSTALL_PATH}}
+
+sparse-checkout:
+    @git submodule foreach '$toplevel/sparse-checkout.sh'
