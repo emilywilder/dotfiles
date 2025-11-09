@@ -41,6 +41,7 @@ source $ZDOTDIR/plugins.zsh
 source $ZDOTDIR/wsl.zsh
 source $ZDOTDIR/just.zsh
 source $ZDOTDIR/glow.zsh
+source $ZDOTDIR/fzf.zsh
 
 # Profiling
 # zprof
