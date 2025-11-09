@@ -30,5 +30,8 @@ install:
 uninstall:
     Remove-Item -Path {{POWERSHELL_INSTALL_PATH}}
 
-sparse-checkout:
+update-submodules:
+    @git submodule update --init
+
+sparse-checkout: update-submodules
     @git submodule foreach '$toplevel/sparse-checkout.sh'
