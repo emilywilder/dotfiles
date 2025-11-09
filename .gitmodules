@@ -1,3 +1,4 @@
 [submodule "fzf-tab"]
 	path = zsh/.config/zsh/plugins/fzf-tab
 	url = git@github.com:Aloxaf/fzf-tab.git
+	sparseCheckout = true
