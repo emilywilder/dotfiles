@@ -1,5 +1,8 @@
 #!/usr/bin/env zsh
 
+# FIXME: capture output of git config and check against value
+# FIXME: add --bool to git config
+
 TRAPZERR() {
     if [[ "$pipestatus" -gt 0 ]]; then
         echo "Error encountered. Exiting."
