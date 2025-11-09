@@ -5,3 +5,4 @@
 [submodule "zsh-functional"]
 	path = zsh/.config/zsh/plugins/zsh-functional
 	url = git@github.com:Tarrasch/zsh-functional.git
+	sparseCheckout = true
