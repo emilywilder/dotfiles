@@ -5,6 +5,9 @@ set shell := ["zsh", "-cu"]
 set script-interpreter := ["zsh"]
 
 DockShelvesPath := join("$HOME", "'Dock Shelves'")
+HM_ShelvesPath := join(DockShelvesPath, "'Home Manager'")
+HM_AppsPath := join("$HOME", "Applications", "'Home Manager Apps'")
+
 SetFile := which("SetFile")
 
 [private]
@@ -32,3 +35,14 @@ remove:
         if [[ "$Shelf" == "${Shelves[-1]}" ]]; then _restart="--restart" ; fi
         \dockutil --remove "${Shelf}" ${_restart}
     done
+
+[macos]
+[script]
+populate-home-manager:
+    if [[ -e {{HM_ShelvesPath}} && -e {{HM_AppsPath}} ]]; then
+        find {{HM_ShelvesPath}} -maxdepth 1 -mindepth 1 -type l -delete
+        for app in {{HM_AppsPath}}/* ; do
+            print "Adding ${app:t}..."
+            ln -s {{HM_AppsPath}}/${app:t} {{HM_ShelvesPath}}/${app:t}
+        done
+    fi
