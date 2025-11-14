@@ -24,7 +24,11 @@ add:
         \cp -TRv Shelves/${Shelf} {{DockShelvesPath}}/${Shelf}
         {{SetFile}} -a C {{DockShelvesPath}}/${Shelf}
         if [[ "$Shelf" == "${Shelves[-1]}" ]]; then _restart="--restart" ; fi
-        \dockutil --add {{DockShelvesPath}}/${Shelf} --view grid --display folder --replacing ${Shelf} ${_restart}
+        \dockutil --add {{DockShelvesPath}}/${Shelf} \
+            --view grid \
+            --display folder \
+            --sort name \
+            --replacing ${Shelf} ${_restart}
     done
 
 [macos]
