@@ -1,3 +1,4 @@
+:runtime XDG.vim
 :runtime kitty.vim
 
 " Basics {
@@ -7,7 +8,6 @@ set t_Co=256
 " } // Basics
 
 " General {
-set directory=${XDG_CONFIG_HOME}/vim/tmp " directory to place swap files in
 set history=50
 " } // General
 
