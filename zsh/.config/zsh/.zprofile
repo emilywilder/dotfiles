@@ -17,6 +17,8 @@ if [[ "${OSTYPE}" =~ "darwin*" ]]; then
         # MacPorts
         /opt/local/bin
         /opt/local/sbin
+        # texlive
+        /Library/TeX/texbin
     )
 fi
 
