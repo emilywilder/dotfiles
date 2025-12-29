@@ -11,11 +11,13 @@ default:
     @just --list
 
 [unix]
+[group("stow")]
 [doc("stow packages to $HOME")]
 install +FILES="*/":
     @stow --verbose --target="${HOME}" --restow {{FILES}}
 
 [unix]
+[group("stow")]
 [doc("unstow packages from $HOME")]
 uninstall +FILES="*/":
     @stow --verbose --target="${HOME}" --delete {{FILES}}
@@ -30,8 +32,10 @@ install:
 uninstall:
     Remove-Item -Path {{POWERSHELL_INSTALL_PATH}}
 
+[group("repo")]
 update-submodules:
     @git submodule update --init
 
+[group("repo")]
 sparse-checkout: update-submodules
     @git submodule foreach '$toplevel/sparse-checkout.sh'
