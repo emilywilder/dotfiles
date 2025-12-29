@@ -1,0 +1,33 @@
+#!/bin/zsh
+
+# open wrapper
+#
+# Opens file with programs associated by filename extension and falls back to
+# the open command if its extension is not mapped.
+#
+# Historically, the open command was a script written by Ken Turner for
+# NeXTSTEP.
+# https://kjt.stir.ac.uk/software/nextstep/open.html
+
+# TODO: use database for program map
+# TODO: make mapping user specific (~/.config/open?)
+# TODO: use more than extension to determine the type of file
+# TODO: let each file type have a list of program options to try
+
+declare -A open_map=(
+    [md]=presenterm     # Markdown
+    [pdf]=tdf           # PDF
+)
+
+extension=${1:t:e}
+
+# If the extension is in open_map, use the program set for it.
+if [[ ${open_map[(I)$extension]} ]]; then
+    ${open_map[$extension]} $@
+# Use the open command, if present.
+elif which command open >/dev/null; then
+    command open $@
+else
+    print "No program mapped to $extension files." >&2
+    return 1
+fi

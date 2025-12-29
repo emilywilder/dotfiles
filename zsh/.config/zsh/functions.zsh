@@ -12,7 +12,7 @@ fpath+=($ZSH_FUNCTIONS_BASEDIR)
 
     readonly functions_athena=(zebesmount bootstrap-nix)
     readonly functions_git=(packsources gittree jetbrains-get-gitignore)
-    readonly functions_macos=(attachiso dequarantine plist2jq)
+    readonly functions_macos=(attachiso dequarantine plist2jq open)
     readonly functions_nix=(nix-deps nix-get-pname nix-get-flake-outpaths nix-search-names)
     readonly functions_python=(python_ensurepip pip_updateall)
 
