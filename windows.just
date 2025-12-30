@@ -8,12 +8,12 @@ import 'windows.env.just'
 default:
     @just --list windows
 
+# Install PowerShell PROFILE
 [windows]
-[doc("Install PowerShell PROFILE")]
 install:
     Copy-Item -Path {{POWERSHELL_CONFIG_PATH}} -Destination {{POWERSHELL_INSTALL_PATH}}
 
+# Uninstall PowerShell PROFILE
 [windows]
-[doc("Uninstall PowerShell PROFILE")]
 uninstall:
     Remove-Item -Path {{POWERSHELL_INSTALL_PATH}}

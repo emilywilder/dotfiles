@@ -6,12 +6,12 @@ set shell := ["zsh", "-cu"]
 default:
     @just --list stow
 
+# Stow packages to $HOME.
 [unix]
-[doc("stow packages to $HOME")]
 restow +FILES="*/":
     @stow --verbose --target="${HOME}" --restow {{FILES}}
 
+# Unstow packages from $HOME.
 [unix]
-[doc("unstow packages from $HOME")]
 delete +FILES="*/":
     @stow --verbose --target="${HOME}" --delete {{FILES}}
