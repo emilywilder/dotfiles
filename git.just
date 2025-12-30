@@ -18,4 +18,4 @@ unlink-gitconfig:
 [unix]
 [working-directory: "git/.config/git"]
 link-gitconfig:
-    ln -s {{platform}}.config {{git_local_config}}
+    ln -sf {{platform}}.config {{git_local_config}}
