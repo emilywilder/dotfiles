@@ -8,14 +8,14 @@ git_local_config := "local.config"
 
 [private]
 default:
-    @just --list
+    @just --list git
 
 [unix]
-[working-directory: ".config/git"]
+[working-directory: "git/.config/git"]
 unlink-gitconfig:
     rm {{git_local_config}}
 
 [unix]
-[working-directory: ".config/git"]
+[working-directory: "git/.config/git"]
 link-gitconfig:
     ln -s {{platform}}.config {{git_local_config}}
