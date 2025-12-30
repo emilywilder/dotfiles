@@ -3,34 +3,25 @@
 set windows-shell := ["pwsh.exe", "-NoLogo", "-Command"]
 set shell := ["zsh", "-cu"]
 
-# variables specific to windows, but just doesn't seem to allow for importing conditionally
-import 'windows.env.just'
+mod stow
+mod git
+mod windows
 
 [private]
 default:
     @just --list
 
 [unix]
-[group("stow")]
-[doc("stow packages to $HOME")]
-install +FILES="*/":
-    @stow --verbose --target="${HOME}" --restow {{FILES}}
+install: stow::restow git::link-gitconfig
 
 [unix]
-[group("stow")]
-[doc("unstow packages from $HOME")]
-uninstall +FILES="*/":
-    @stow --verbose --target="${HOME}" --delete {{FILES}}
+uninstall: stow::delete git::unlink-gitconfig
 
 [windows]
-[doc("Install PowerShell PROFILE")]
-install:
-    Copy-Item -Path {{POWERSHELL_CONFIG_PATH}} -Destination {{POWERSHELL_INSTALL_PATH}}
+install: windows::install
 
 [windows]
-[doc("Uninstall PowerShell PROFILE")]
-uninstall:
-    Remove-Item -Path {{POWERSHELL_INSTALL_PATH}}
+uninstall: windows::uninstall
 
 [group("repo")]
 update-submodules:
