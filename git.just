@@ -10,11 +10,13 @@ git_local_config := "local.config"
 default:
     @just --list git
 
+# Add platform specific git config options.
 [unix]
 [working-directory: "git/.config/git"]
 unlink-gitconfig:
     rm {{git_local_config}}
 
+# Remove localized git config options.
 [unix]
 [working-directory: "git/.config/git"]
 link-gitconfig:
