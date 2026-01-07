@@ -9,6 +9,8 @@ mod stow
 mod git
 # Module for Windows specific recipes.
 mod windows
+# Module for macOS Dock.app recipes.
+mod Dock "Dock.app"
 
 [private]
 default:
@@ -16,11 +18,11 @@ default:
 
 # Install UNIX configuration.
 [unix]
-install: stow::restow git::link-gitconfig
+install: stow::restow git::link-gitconfig Dock::install
 
 # Uninstall UNIX configuration.
 [unix]
-uninstall: stow::delete git::unlink-gitconfig
+uninstall: stow::delete git::unlink-gitconfig Dock::uninstall
 
 # Install Windows configuration.
 [windows]

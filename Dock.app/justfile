@@ -53,3 +53,9 @@ populate-home-manager:
             ln -s {{HM_AppsPath}}/${app:t} {{HM_ShelvesPath}}/${app:t}
         done
     fi
+
+[macos]
+install: add populate-home-manager
+
+[macos]
+uninstall: remove
