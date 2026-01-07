@@ -18,11 +18,11 @@ default:
 
 # Install UNIX configuration.
 [unix]
-install: stow::restow git::link-gitconfig Dock::install
+install: stow::install git::link-gitconfig Dock::install
 
 # Uninstall UNIX configuration.
 [unix]
-uninstall: stow::delete git::unlink-gitconfig Dock::uninstall
+uninstall: stow::uninstall git::unlink-gitconfig Dock::uninstall
 
 # Install Windows configuration.
 [windows]
