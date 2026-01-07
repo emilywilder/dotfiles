@@ -14,19 +14,19 @@ mod windows
 default:
     @just --list
 
-# Stow packages and link gitconfig.
+# Install UNIX configuration.
 [unix]
 install: stow::restow git::link-gitconfig
 
-# Unstow packages and unlink gitconfig.
+# Uninstall UNIX configuration.
 [unix]
 uninstall: stow::delete git::unlink-gitconfig
 
-# Run windows install.
+# Install Windows configuration.
 [windows]
 install: windows::install
 
-# Run windows uninstall.
+# Uninstall Windows configuration.
 [windows]
 uninstall: windows::uninstall
 
