@@ -48,6 +48,8 @@ populate-home-manager:
     if [[ -e {{HM_ShelvesPath}} && -e {{HM_AppsPath}} ]]; then
         \print -n "Removing existing apps..."
         find {{HM_ShelvesPath}} -maxdepth 1 -mindepth 1 -type l -delete
+        \print ok
+        \print "Adding apps..."
         for app in {{HM_AppsPath}}/* ; do
             print "+ ${app:t}"
             ln -s {{HM_AppsPath}}/${app:t} {{HM_ShelvesPath}}/${app:t}
