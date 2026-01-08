@@ -1,0 +1,13 @@
+#!/bin/zsh
+
+# source: https://medium.com/@swindlers-inc/prettifying-my-zsh-prompt-e1fe04848005
+
+if [ $# -eq 1 ]; then
+    echo -n $1 |
+      iconv -f utf-8 -t utf32be |
+      xxd -u -p |
+      sed -r 's/^0+//'
+else
+    echo "usage: ${funcstack[-1]} <glyph>" >&2
+    return 1
+fi
