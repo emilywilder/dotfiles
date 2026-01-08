@@ -29,6 +29,7 @@ compinit -d $XDG_CACHE_HOME/zsh/compdump
 ## TODO: which parts of macOS can be sources?
 
 # Sources
+source $ZDOTDIR/home-manager.zsh
 source $ZDOTDIR/prompt.zsh
 source $ZDOTDIR/keybindings.zsh
 ##TODO: make these platform specific
