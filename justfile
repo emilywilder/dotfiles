@@ -20,13 +20,21 @@ mod Dock "Dock.app"
 default:
     @just --list
 
-# Install UNIX configuration.
-[unix]
-install: stow::install git::link-gitconfig Dock::install
+# Install Linux configuration.
+[linux]
+install: unix-install
 
-# Uninstall UNIX configuration.
-[unix]
-uninstall: stow::uninstall git::unlink-gitconfig Dock::uninstall
+# Uninstall Linux configuration.
+[linux]
+uninstall: unix-install
+
+# Install macOS configuration.
+[macos]
+install: unix-install Dock::install
+
+# Uninstall macOS configuration.
+[macos]
+uninstall: unix-uninstall Dock::uninstall
 
 # Install Windows configuration.
 [windows]
@@ -45,3 +53,9 @@ update-submodules:
 [group("repo")]
 sparse-checkout: update-submodules
     @git submodule foreach '$toplevel/sparse-checkout.sh'
+
+[private]
+unix-install: stow::install git::link-gitconfig
+
+[private]
+unix-uninstall: stow::uninstall git::unlink-gitconfig
