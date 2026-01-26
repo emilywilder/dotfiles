@@ -4,12 +4,16 @@ set windows-shell := ["pwsh.exe", "-NoLogo", "-Command"]
 set shell := ["zsh", "-cu"]
 
 # Module for GNU stow recipes.
+[group("modules")]
 mod stow
 # Module for git recipes.
+[group("modules")]
 mod git
 # Module for Windows specific recipes.
+[group("modules")]
 mod windows
 # Module for macOS Dock.app recipes.
+[group("modules")]
 mod Dock "Dock.app"
 
 [private]
