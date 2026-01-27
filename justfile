@@ -44,10 +44,15 @@ install: windows::install
 [windows]
 uninstall: windows::uninstall
 
-# Update and initialize submodules.
+# Initialize submodules.
 [group("repo")]
-update-submodules:
-    @git submodule update --init
+initialize-submodules:
+    @git submodule update --init --recursive
+
+# Update submodules.
+[group("repo")]
+update-submodules: initialize-submodules
+    @git submodule update --remote --merge
 
 # Do a sparse checkout of each submodule.
 [group("repo")]
