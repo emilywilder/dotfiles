@@ -21,3 +21,18 @@ unlink-gitconfig:
 [working-directory: "git/.config/git"]
 link-gitconfig:
     ln -sf {{platform}}.config {{git_local_config}}
+
+# Initialize submodules.
+[group("repo")]
+initialize-submodules:
+    @git submodule update --init --recursive
+
+# Update submodules.
+[group("repo")]
+update-submodules: initialize-submodules
+    @git submodule update --remote --merge
+
+# Do a sparse checkout of each submodule.
+[group("repo")]
+sparse-checkout: update-submodules
+    @git submodule foreach '$toplevel/sparse-checkout.sh'

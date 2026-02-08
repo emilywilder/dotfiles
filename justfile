@@ -44,21 +44,6 @@ install: windows::install
 [windows]
 uninstall: windows::uninstall
 
-# Initialize submodules.
-[group("repo")]
-initialize-submodules:
-    @git submodule update --init --recursive
-
-# Update submodules.
-[group("repo")]
-update-submodules: initialize-submodules
-    @git submodule update --remote --merge
-
-# Do a sparse checkout of each submodule.
-[group("repo")]
-sparse-checkout: update-submodules
-    @git submodule foreach '$toplevel/sparse-checkout.sh'
-
 [private]
 unix-install: stow::install git::link-gitconfig
 
