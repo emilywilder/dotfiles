@@ -1,6 +1,6 @@
 if which eza >/dev/null; then
-    alias ls='eza --icons auto'
-    alias l='ls -l --git -M -h'
+    alias ls='eza --icons=auto'
+    alias l='ls -lhM --git'
     alias lsd='l -D'
     alias lss='l --sort=size --color-scale=size'
     alias lst='l --sort=date --color-scale=age'
