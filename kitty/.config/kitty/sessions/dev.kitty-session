@@ -1,0 +1,7 @@
+new_os_window
+launch --title dotfiles --cwd ~/src/dotfiles
+
+new_tab nixfiles
+cd ~/src/nixfiles
+
+focus_tab title:dotfiles
