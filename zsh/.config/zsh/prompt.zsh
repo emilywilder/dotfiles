@@ -14,7 +14,7 @@ precmd_functions+=( precmd_vcs_info )
 
 _prev_cmd_status='%(?.️%F{green}.%F{red})⏺%F{white} '
 
-RPROMPT='↳%?%(2L. ↓%L.)'
+RPROMPT='%(?..%F{red}↳ %?%F{white})%(2L. ↓%L.)'
 
 PROMPT='%B%F{green}%~%f %B%F{cyan}${vcs_info_msg_0_}%f
 ${_prev_cmd_status}%F{white}%n@%m %# %f%b'
