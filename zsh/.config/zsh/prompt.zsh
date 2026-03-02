@@ -15,4 +15,4 @@ RPROMPT='[%?]'
 # https://zsh.sourceforge.io/Doc/Release/Prompt-Expansion.html#Conditional-Substrings-in-Prompts
 
 PROMPT='%B%F{green}%~%f %B%F{cyan}${vcs_info_msg_0_}%f
-%(2L.(${SHLVL}) .)%F{white}%n@%m %# %f%b'
+%(2L.(%L) .)%F{white}%n@%m %# %f%b'
