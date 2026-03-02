@@ -9,10 +9,12 @@ zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
 precmd_vcs_info() { vcs_info }
 precmd_functions+=( precmd_vcs_info )
 
-RPROMPT='[%?]'
-
 # uses a ternary expression as defined in
 # https://zsh.sourceforge.io/Doc/Release/Prompt-Expansion.html#Conditional-Substrings-in-Prompts
 
+_prev_cmd_status='%(?.️%F{green}.%F{red})⏺%F{white}'
+
+RPROMPT='[%?]'
+
 PROMPT='%B%F{green}%~%f %B%F{cyan}${vcs_info_msg_0_}%f
-%(2L.(%L) .)%F{white}%n@%m %# %f%b'
+%(2L.(%L) .)${_prev_cmd_status} %F{white}%n@%m %# %f%b'
