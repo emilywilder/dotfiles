@@ -14,3 +14,4 @@ fi
 alias paths='echo ${PATH//:/\\n}'
 alias vi='vim'
 alias diff='diff -u --color'
+alias du-ls='du -sh -- * | sort -h'
