@@ -19,6 +19,8 @@ if [[ "${OSTYPE}" =~ "darwin*" ]]; then
         /opt/local/sbin
         # texlive
         /Library/TeX/texbin
+        # JetBrains Toolbox
+        ${HOME}/Library/Application\ Support/JetBrains/Toolbox/scripts/
     )
 fi
 
