@@ -61,9 +61,11 @@ ATUIN_CONFIG_TOML := join("$HOME", ".config/atuin/config.toml")
 stale-atuin-config:
     _file={{ATUIN_CONFIG_TOML}}
     # file exists and is not a symlink
-    if test -e ${_file} -a ! -L ${_file}; then
-        print "Removing stale atuin config: ${_file}"
+    if test -e ${_file} -a ! -L ${_file} -a ! -L ${_file:h}; then
+        print "Removing stale atuin config file: ${_file}"
         rm ${_file}
+        print "Removing stale atuin config directory: ${_file:h}"
+        rmdir ${_file:h}
     fi
 
 # Run all fixes then stow all packages to $HOME.
