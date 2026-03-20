@@ -12,3 +12,7 @@
 	path = vim/.config/vim/pack/colors/start/vim-transparent
 	url = git@github.com:tribela/vim-transparent.git
     branch = master
+[submodule "xoria256"]
+	path = vim/.config/vim/pack/colors/start/xoria256/source
+	url = git@github.com:x1o/xoria256.git
+	branch = master
