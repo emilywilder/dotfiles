@@ -8,3 +8,6 @@
 	url = git@github.com:Tarrasch/zsh-functional.git
 	branch = master
 	sparseCheckout = true
+[submodule "vim-transparent"]
+	path = vim/.config/vim/pack/colors/start/vim-transparent
+	url = git@github.com:tribela/vim-transparent.git
