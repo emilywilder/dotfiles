@@ -11,3 +11,4 @@
 [submodule "vim-transparent"]
 	path = vim/.config/vim/pack/colors/start/vim-transparent
 	url = git@github.com:tribela/vim-transparent.git
+    branch = master
