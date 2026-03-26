@@ -10,10 +10,14 @@ fpath+=($ZSH_FUNCTIONS_BASEDIR)
         python
     )
 
+    # hosts
     readonly functions_athena=(zebesmount bootstrap-nix)
+    # systems
+    readonly functions_unix=(glyph2codepoint)
+    readonly functions_linux=()
+    readonly functions_macos=(attachiso dequarantine plist2jq open)
+    # programs
     readonly functions_git=(packsources gittree jetbrains-get-gitignore)
-    readonly functions_macos=(attachiso dequarantine plist2jq open glyph2codepoint)
-    readonly functions_linux=(glyph2codepoint)
     readonly functions_nix=(nix-deps nix-get-pname nix-get-flake-outpaths nix-search-names)
     readonly functions_python=(python_ensurepip pip_updateall)
 
@@ -21,8 +25,9 @@ fpath+=($ZSH_FUNCTIONS_BASEDIR)
 
     # check for OS specific functions
     case "${OSTYPE}" in
-        darwin*)    functions_to_load+=(${(A)functions_macos}) ;;
-        linux*)     functions_to_load+=(${(A)functions_linux}) ;;
+        linux*|darwin*)    functions_to_load+=(${(A)functions_unix}) ;;
+        linux*)            functions_to_load+=(${(A)functions_linux}) ;;
+        darwin*)           functions_to_load+=(${(A)functions_macos}) ;;
     esac
 
     # check that these programs exist before loading their functions
