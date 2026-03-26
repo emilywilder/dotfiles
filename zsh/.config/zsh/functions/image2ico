@@ -1,0 +1,14 @@
+#!/bin/zsh
+
+# Source: https://askubuntu.com/questions/867567/convert-jpg-or-png-to-ico-using-terminal-and-back
+# modified to combine answers
+# adapted to IMv7
+
+if [ $# -eq 1 -o $# -eq 2 ]; then
+  local _input="${1}"
+  local _output="${2:-${1:r}.ico}"
+  magick ${_input} -verbose -define icon:auto-resize=256,64,48,32,16 ${_output}
+else
+  echo "usage: ${funcstack[-1]} <input> [output]" >&2
+  return 1
+fi
