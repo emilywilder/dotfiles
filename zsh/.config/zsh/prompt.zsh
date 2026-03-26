@@ -12,9 +12,14 @@ precmd_functions+=( precmd_vcs_info )
 # uses a ternary expression as defined in
 # https://zsh.sourceforge.io/Doc/Release/Prompt-Expansion.html#Conditional-Substrings-in-Prompts
 
-_prev_cmd_status='%(?.️%F{green}.%F{red})⏺%F{white} '
+# Unicode symbols
+# U2B24 -> ⏺
+# U21B3 -> ↳
+# U2193 -> ↓
 
-RPROMPT='%(?..%F{red}↳ %?%F{white})%(2L. ↓%L.)'
+_prev_cmd_status='%(?.%F{green}.%F{red})'$'\U2B24''%F{white} '
+
+RPROMPT='%(?..%F{red}'$'\U21B3'' %?%F{white})%(2L. '$'\U2193''%L.)'
 
 PROMPT='%B%F{green}%~%f %B%F{cyan}${vcs_info_msg_0_}%f
 ${_prev_cmd_status}%F{white}%n@%m %# %f%b'
