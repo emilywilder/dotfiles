@@ -2,7 +2,7 @@
 
 set windows-shell := ["pwsh.exe", "-NoLogo", "-Command"]
 
-import 'windows.env.just'
+import 'env.just'
 
 [private]
 default:
