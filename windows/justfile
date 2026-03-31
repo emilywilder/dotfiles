@@ -6,7 +6,7 @@ import 'windows.env.just'
 
 [private]
 default:
-    @just --list windows
+    @just --list
 
 # Install PowerShell PROFILE
 [windows]
