@@ -45,7 +45,9 @@ install: windows::install
 uninstall: windows::uninstall
 
 [private]
+[unix]
 unix-install: stow::install git::link-gitconfig
 
 [private]
+[unix]
 unix-uninstall: stow::uninstall git::unlink-gitconfig

@@ -69,10 +69,13 @@ stale-atuin-config:
     fi
 
 # Run all fixes then stow all packages to $HOME.
+[unix]
 install: fixes restow
 
 # Unstow all packages from $HOME.
+[unix]
 uninstall: delete
 
+[unix]
 [private]
 fixes: stale-atuin-config
