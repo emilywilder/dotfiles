@@ -5,18 +5,35 @@ set windows-shell := ["pwsh.exe", "-NoLogo", "-Command"]
 import 'env.just'
 
 # Windows OS configuration
+[group("modules")]
 mod system
+# Package management : scoop
+[group("modules")]
+mod scoop
+# Package management : winget
+[group("modules")]
+mod winget
 
 [private]
 default:
     @just --list
 
+# Install
+[windows]
+install: profile-install scoop::import winget::import
+
+# Uninstall
+[windows]
+uninstall: profile-uninstall
+
 # Install PowerShell PROFILE
 [windows]
-install:
+[group("profile")]
+profile-install:
     Copy-Item -Path {{POWERSHELL_CONFIG_PATH}} -Destination {{POWERSHELL_INSTALL_PATH}}
 
 # Uninstall PowerShell PROFILE
 [windows]
-uninstall:
+[group("profile")]
+profile-uninstall:
     Remove-Item -Path {{POWERSHELL_INSTALL_PATH}}
