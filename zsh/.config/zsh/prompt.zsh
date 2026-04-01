@@ -13,11 +13,11 @@ precmd_functions+=( precmd_vcs_info )
 # https://zsh.sourceforge.io/Doc/Release/Prompt-Expansion.html#Conditional-Substrings-in-Prompts
 
 # Unicode symbols
-# U23FA -> ⏺
+# U25CF -> ●
 # U21B3 -> ↳
 # U2193 -> ↓
 
-_prev_cmd_status='%(?.%F{green}.%F{red})'$'\U23FA''%F{white} '
+_prev_cmd_status='%(?.%F{green}.%F{red})'$'\U25CF''%F{white} '
 
 RPROMPT='%(?..%F{red}'$'\U21B3'' %?%F{white})%(2L. '$'\U2193''%L.)'
 
