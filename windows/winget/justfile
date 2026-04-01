@@ -1,0 +1,19 @@
+#!/usr/bin/env just --justfile
+
+set windows-shell := ["pwsh.exe", "-NoLogo", "-Command"]
+
+export WINGET_CONFIG := "winget.json"
+
+[private]
+default:
+    @just --list
+
+# export installed packages to WINGET_CONFIG
+[windows]
+export:
+    winget export --ignore-warnings -s winget -o {{WINGET_CONFIG}}
+
+# install packages from WINGET_CONFIG export
+[windows]
+import:
+    winget import {{WINGET_CONFIG}}
