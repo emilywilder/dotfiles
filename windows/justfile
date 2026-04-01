@@ -4,6 +4,9 @@ set windows-shell := ["pwsh.exe", "-NoLogo", "-Command"]
 
 import 'env.just'
 
+# Windows OS configuration
+mod system
+
 [private]
 default:
     @just --list
