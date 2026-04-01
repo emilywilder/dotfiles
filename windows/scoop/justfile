@@ -1,0 +1,34 @@
+#!/usr/bin/env just --justfile
+
+set windows-shell := ["pwsh.exe", "-NoLogo", "-Command"]
+set script-interpreter := ["pwsh.exe", "-NoLogo", "-Command"]
+
+export SCOOP_CONFIG := "scoop.json"
+
+[private]
+default:
+    @just --list
+
+# export installed packages to SCOOP_CONFIG
+[windows]
+export:
+    scoop export \
+        | jq '.[].[] |= with_entries(select(.key == ("Name", "Source")))' \
+        > {{SCOOP_CONFIG}}
+
+# import packages into scoop from SCOOP_CONFIG
+[windows]
+import: install
+    scoop import {{SCOOP_CONFIG}}
+
+# Install scoop
+[windows]
+[script]
+install:
+    try {
+        if ( Get-Command scoop -ErrorAction Stop ) {
+            Write-Output "scoop already installed. skipping..."
+        }
+    } catch [System.Management.Automation.CommandNotFoundException] {
+        irm https://get.scoop.sh | iex
+    }
