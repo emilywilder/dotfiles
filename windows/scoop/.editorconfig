@@ -1,0 +1,3 @@
+# Config is created and used in Windows
+[*.json]
+end_of_line = crlf
