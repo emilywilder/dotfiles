@@ -25,9 +25,13 @@ fpath+=($ZSH_FUNCTIONS_BASEDIR)
 
     local functions_to_load=()
 
-    # check for OS specific functions
+    # check for OS generic functions
     case "${OSTYPE}" in
         linux*|darwin*)    functions_to_load+=(${(A)functions_unix}) ;;
+    esac
+
+    # check for OS specific functions
+    case "${OSTYPE}" in
         linux*)            functions_to_load+=(${(A)functions_linux}) ;;
         darwin*)           functions_to_load+=(${(A)functions_macos}) ;;
     esac
