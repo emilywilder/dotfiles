@@ -9,6 +9,14 @@ export WINGET_CONFIG := "winget.json"
 default:
     @just --list
 
+# generate new config with fixes
+[windows]
+update: export fix-jetbrains-toolbox
+
+# install packages from config
+[windows]
+install: import
+
 # export installed packages to WINGET_CONFIG
 [windows]
 export:
