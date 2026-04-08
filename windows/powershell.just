@@ -2,7 +2,13 @@
 
 set windows-shell := ["pwsh.exe", "-NoLogo", "-Command"]
 
-POWERSHELL_CONFIG_PATH := join(justfile_directory(), "powershell", ".config", "powershell", "Microsoft.PowerShell_profile.ps1")
+POWERSHELL_CONFIG_PATH := join( \
+    justfile_directory(), \
+    "powershell", \
+    ".config", \
+    "powershell", \
+    "Microsoft.PowerShell_profile.ps1" \
+)
 
 [private]
 default:
