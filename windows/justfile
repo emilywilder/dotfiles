@@ -30,13 +30,13 @@ uninstall: profile-uninstall
 [windows]
 [group("profile")]
 profile-install:
-    Copy-Item -Path {{POWERSHELL_CONFIG_PATH}} -Destination {{POWERSHELL_INSTALL_PATH}}
+    Copy-Item -Path {{POWERSHELL_CONFIG_PATH}} -Destination $PROFILE
 
 # Uninstall PowerShell PROFILE
 [windows]
 [group("profile")]
 profile-uninstall:
-    Remove-Item -Path {{POWERSHELL_INSTALL_PATH}}
+    Remove-Item -Path $PROFILE
 
 # install Microsoft.WinGet.Client powershell module
 [windows]
