@@ -40,10 +40,6 @@ uninstall: unix-uninstall Dock::uninstall
 [windows]
 install: windows::install
 
-# Uninstall Windows configuration.
-[windows]
-uninstall: windows::uninstall
-
 [private]
 [unix]
 unix-install: stow::install git::link-gitconfig

@@ -22,21 +22,11 @@ default:
 [windows]
 install: profile-install pwsh-dsc pwsh-winget-client scoop::import winget::install
 
-# Uninstall
-[windows]
-uninstall: profile-uninstall
-
 # Install PowerShell PROFILE
 [windows]
 [group("profile")]
 profile-install:
     Copy-Item -Path {{POWERSHELL_CONFIG_PATH}} -Destination $PROFILE
-
-# Uninstall PowerShell PROFILE
-[windows]
-[group("profile")]
-profile-uninstall:
-    Remove-Item -Path $PROFILE
 
 # install Microsoft.WinGet.Client powershell module
 [windows]
