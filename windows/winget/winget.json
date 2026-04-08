@@ -1,6 +1,6 @@
 {
 	"$schema" : "https://aka.ms/winget-packages.schema.2.0.json",
-	"CreationDate" : "2026-04-01T15:39:00.222-00:00",
+	"CreationDate" : "2026-04-08T13:25:06.600-00:00",
 	"Sources" : 
 	[
 		{
@@ -82,6 +82,9 @@
 					"PackageIdentifier" : "Microsoft.Edge"
 				},
 				{
+					"PackageIdentifier" : "CreativeTechnology.OpenAL"
+				},
+				{
 					"PackageIdentifier" : "Libretro.RetroArch"
 				},
 				{
@@ -109,10 +112,7 @@
 					"PackageIdentifier" : "Microsoft.VCRedist.2012.x86"
 				},
 				{
-					"PackageIdentifier" : "Microsoft.DotNet.DesktopRuntime.8"
-				},
-				{
-					"PackageIdentifier" : "Python.Launcher"
+					"PackageIdentifier" : "Microsoft.DotNet.DesktopRuntime.8.x64"
 				},
 				{
 					"PackageIdentifier" : "GOG.Galaxy"
@@ -131,6 +131,9 @@
 				},
 				{
 					"PackageIdentifier" : "Microsoft.VCRedist.2010.x86"
+				},
+				{
+					"PackageIdentifier" : "Microsoft.DotNet.DesktopRuntime.8"
 				},
 				{
 					"PackageIdentifier" : "Microsoft.VCRedist.2012.x64"
@@ -184,16 +187,13 @@
 					"PackageIdentifier" : "junegunn.fzf"
 				},
 				{
-					"PackageIdentifier" : "Python.Python.3.11"
+					"PackageIdentifier" : "Python.Python.3.14"
 				},
 				{
 					"PackageIdentifier" : "Microsoft.VisualStudioCode"
 				},
 				{
 					"PackageIdentifier" : "Proton.ProtonDrive"
-				},
-				{
-					"PackageIdentifier" : "Python.Python.3.14"
 				},
 				{
 					"PackageIdentifier" : "AgileBits.1Password"
@@ -218,6 +218,27 @@
 				},
 				{
 					"PackageIdentifier" : "Microsoft.VCLibs.14"
+				},
+				{
+					"PackageIdentifier" : "Microsoft.WindowsAppRuntime.1.1"
+				},
+				{
+					"PackageIdentifier" : "Microsoft.WindowsAppRuntime.1.2"
+				},
+				{
+					"PackageIdentifier" : "Microsoft.WindowsAppRuntime.1.3"
+				},
+				{
+					"PackageIdentifier" : "Microsoft.WindowsAppRuntime.1.4"
+				},
+				{
+					"PackageIdentifier" : "Microsoft.WindowsAppRuntime.1.5"
+				},
+				{
+					"PackageIdentifier" : "Microsoft.WindowsAppRuntime.1.6"
+				},
+				{
+					"PackageIdentifier" : "Microsoft.WindowsAppRuntime.1.7"
 				},
 				{
 					"PackageIdentifier" : "Microsoft.WindowsAppRuntime.1.8"
