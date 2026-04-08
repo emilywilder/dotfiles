@@ -5,6 +5,10 @@ set script-interpreter := ["pwsh.exe", "-NoLogo", "-Command"]
 
 export WINGET_CONFIG := "winget.json"
 
+#
+# •───────•°•❀  API  ❀•°•───────•
+#
+
 [private]
 default:
     @just --list
@@ -17,6 +21,10 @@ update: export fix-jetbrains-toolbox
 [windows]
 install: import
 
+#
+# •───────•°•❀  winget  ❀•°•───────•
+#
+
 # export installed packages to WINGET_CONFIG
 [windows]
 [group("winget")]
@@ -28,6 +36,10 @@ export:
 [group("winget")]
 import:
     winget import {{WINGET_CONFIG}}
+
+#
+# •───────•°•❀  fixes  ❀•°•───────•
+#
 
 # fix issue with JetBrains IDEA entry when installed through Jetbrains Toolbox
 [windows]
