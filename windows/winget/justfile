@@ -28,8 +28,12 @@ install: import
 # export installed packages to WINGET_CONFIG
 [windows]
 [group("winget")]
+[script]
 export:
+    Write-Host "Updating {{WINGET_CONFIG}}..." -NoNewline
+    Write-Progress -CurrentOperation "Exporting" ( "Updating {{WINGET_CONFIG}}..." )
     winget export --ignore-warnings -s winget -o {{WINGET_CONFIG}}
+    Write-Host "Done"
 
 # install packages from WINGET_CONFIG export
 [windows]
