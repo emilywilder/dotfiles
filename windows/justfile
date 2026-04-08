@@ -20,7 +20,7 @@ default:
 
 # Install
 [windows]
-install: profile-install pwsh-dsc pwsh-winget-client scoop::import winget::import
+install: profile-install pwsh-dsc pwsh-winget-client scoop::import winget::install
 
 # Uninstall
 [windows]
