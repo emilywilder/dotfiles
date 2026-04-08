@@ -1,6 +1,7 @@
 #!/usr/bin/env just --justfile
 
 set windows-shell := ["pwsh.exe", "-NoLogo", "-Command"]
+set script-interpreter := ["pwsh.exe", "-NoLogo", "-Command"]
 
 export WINGET_CONFIG := "winget.json"
 
@@ -17,3 +18,15 @@ export:
 [windows]
 import:
     winget import {{WINGET_CONFIG}}
+
+# fix issue with JetBrains IDEA entry when installed through Jetbrains Toolbox
+[windows]
+[script]
+fix-jetbrains-toolbox:
+    try {
+        $tempFile = "{{WINGET_CONFIG}}.temp"
+        cp {{WINGET_CONFIG}} $tempFile
+        ( jq --tab 'del( .Sources.[].Packages.[] | select (.PackageIdentifier == "JetBrains.IntelliJIDEA") )' $tempFile ) > {{WINGET_CONFIG}}
+    } finally {
+        if (Test-Path $tempFile) { Remove-Item $tempFile }
+    }
