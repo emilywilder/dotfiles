@@ -1,266 +1,260 @@
 {
-	"$schema" : "https://aka.ms/winget-packages.schema.2.0.json",
-	"CreationDate" : "2026-04-08T13:25:06.600-00:00",
-	"Sources" : 
-	[
+	"$schema": "https://aka.ms/winget-packages.schema.2.0.json",
+	"CreationDate": "2026-04-08T15:43:15.101-00:00",
+	"Sources": [
 		{
-			"Packages" : 
-			[
+			"Packages": [
 				{
-					"PackageIdentifier" : "7zip.7zip"
+					"PackageIdentifier": "7zip.7zip"
 				},
 				{
-					"PackageIdentifier" : "CPUID.CPU-Z.ROG"
+					"PackageIdentifier": "CPUID.CPU-Z.ROG"
 				},
 				{
-					"PackageIdentifier" : "Git.Git"
+					"PackageIdentifier": "Git.Git"
 				},
 				{
-					"PackageIdentifier" : "ImageMagick.ImageMagick"
+					"PackageIdentifier": "ImageMagick.ImageMagick"
 				},
 				{
-					"PackageIdentifier" : "LyX.LyX"
+					"PackageIdentifier": "LyX.LyX"
 				},
 				{
-					"PackageIdentifier" : "Mozilla.Firefox"
+					"PackageIdentifier": "Mozilla.Firefox"
 				},
 				{
-					"PackageIdentifier" : "Mozilla.Thunderbird"
+					"PackageIdentifier": "Mozilla.Thunderbird"
 				},
 				{
-					"PackageIdentifier" : "Proton.ProtonMailBridge"
+					"PackageIdentifier": "Proton.ProtonMailBridge"
 				},
 				{
-					"PackageIdentifier" : "TeXstudio.TeXstudio"
+					"PackageIdentifier": "TeXstudio.TeXstudio"
 				},
 				{
-					"PackageIdentifier" : "vim.vim"
+					"PackageIdentifier": "vim.vim"
 				},
 				{
-					"PackageIdentifier" : "GNU.Emacs"
+					"PackageIdentifier": "GNU.Emacs"
 				},
 				{
-					"PackageIdentifier" : "Microsoft.PowerShell"
+					"PackageIdentifier": "Microsoft.PowerShell"
 				},
 				{
-					"PackageIdentifier" : "Microsoft.VCRedist.2010.x64"
+					"PackageIdentifier": "Microsoft.VCRedist.2010.x64"
 				},
 				{
-					"PackageIdentifier" : "RedHat.Podman"
+					"PackageIdentifier": "RedHat.Podman"
 				},
 				{
-					"PackageIdentifier" : "Malwarebytes.Malwarebytes"
+					"PackageIdentifier": "Malwarebytes.Malwarebytes"
 				},
 				{
-					"PackageIdentifier" : "gerardog.gsudo"
+					"PackageIdentifier": "gerardog.gsudo"
 				},
 				{
-					"PackageIdentifier" : "Giorgiotani.Peazip"
+					"PackageIdentifier": "Giorgiotani.Peazip"
 				},
 				{
-					"PackageIdentifier" : "Meld.Meld"
+					"PackageIdentifier": "Meld.Meld"
 				},
 				{
-					"PackageIdentifier" : "Microsoft.VCRedist.2008.x64"
+					"PackageIdentifier": "Microsoft.VCRedist.2008.x64"
 				},
 				{
-					"PackageIdentifier" : "PlayStation.PlayStationAccessories"
+					"PackageIdentifier": "PlayStation.PlayStationAccessories"
 				},
 				{
-					"PackageIdentifier" : "Corsair.iCUE.5"
+					"PackageIdentifier": "Corsair.iCUE.5"
 				},
 				{
-					"PackageIdentifier" : "Microsoft.GameInput"
+					"PackageIdentifier": "Microsoft.GameInput"
 				},
 				{
-					"PackageIdentifier" : "Neovim.Neovim"
+					"PackageIdentifier": "Neovim.Neovim"
 				},
 				{
-					"PackageIdentifier" : "Microsoft.VCRedist.2005.x86"
+					"PackageIdentifier": "Microsoft.VCRedist.2005.x86"
 				},
 				{
-					"PackageIdentifier" : "Microsoft.Edge"
+					"PackageIdentifier": "Microsoft.Edge"
 				},
 				{
-					"PackageIdentifier" : "CreativeTechnology.OpenAL"
+					"PackageIdentifier": "CreativeTechnology.OpenAL"
 				},
 				{
-					"PackageIdentifier" : "Libretro.RetroArch"
+					"PackageIdentifier": "Libretro.RetroArch"
 				},
 				{
-					"PackageIdentifier" : "Valve.Steam"
+					"PackageIdentifier": "Valve.Steam"
 				},
 				{
-					"PackageIdentifier" : "WiresharkFoundation.Wireshark"
+					"PackageIdentifier": "WiresharkFoundation.Wireshark"
 				},
 				{
-					"PackageIdentifier" : "Microsoft.VCRedist.2013.x64"
+					"PackageIdentifier": "Microsoft.VCRedist.2013.x64"
 				},
 				{
-					"PackageIdentifier" : "Microsoft.VCRedist.2015+.x86"
+					"PackageIdentifier": "Microsoft.VCRedist.2015+.x86"
 				},
 				{
-					"PackageIdentifier" : "Microsoft.DotNet.Framework.DeveloperPack.4.6"
+					"PackageIdentifier": "Microsoft.DotNet.Framework.DeveloperPack.4.6"
 				},
 				{
-					"PackageIdentifier" : "Microsoft.DotNet.Runtime.8"
+					"PackageIdentifier": "Microsoft.DotNet.Runtime.8"
 				},
 				{
-					"PackageIdentifier" : "Microsoft.DotNet.Runtime.6"
+					"PackageIdentifier": "Microsoft.DotNet.Runtime.6"
 				},
 				{
-					"PackageIdentifier" : "Microsoft.VCRedist.2012.x86"
+					"PackageIdentifier": "Microsoft.VCRedist.2012.x86"
 				},
 				{
-					"PackageIdentifier" : "Microsoft.DotNet.DesktopRuntime.8.x64"
+					"PackageIdentifier": "Microsoft.DotNet.DesktopRuntime.8.x64"
 				},
 				{
-					"PackageIdentifier" : "GOG.Galaxy"
+					"PackageIdentifier": "GOG.Galaxy"
 				},
 				{
-					"PackageIdentifier" : "Microsoft.VCRedist.2015+.x64"
+					"PackageIdentifier": "Microsoft.VCRedist.2015+.x64"
 				},
 				{
-					"PackageIdentifier" : "Microsoft.VCRedist.2008.x86"
+					"PackageIdentifier": "Microsoft.VCRedist.2008.x86"
 				},
 				{
-					"PackageIdentifier" : "Microsoft.VCRedist.2013.x86"
+					"PackageIdentifier": "Microsoft.VCRedist.2013.x86"
 				},
 				{
-					"PackageIdentifier" : "Microsoft.XNARedist"
+					"PackageIdentifier": "Microsoft.XNARedist"
 				},
 				{
-					"PackageIdentifier" : "Microsoft.VCRedist.2010.x86"
+					"PackageIdentifier": "Microsoft.VCRedist.2010.x86"
 				},
 				{
-					"PackageIdentifier" : "Microsoft.DotNet.DesktopRuntime.8"
+					"PackageIdentifier": "Microsoft.DotNet.DesktopRuntime.8"
 				},
 				{
-					"PackageIdentifier" : "Microsoft.VCRedist.2012.x64"
+					"PackageIdentifier": "Microsoft.VCRedist.2012.x64"
 				},
 				{
-					"PackageIdentifier" : "AgileBits.1Password.CLI"
+					"PackageIdentifier": "AgileBits.1Password.CLI"
 				},
 				{
-					"PackageIdentifier" : "Brave.Brave"
+					"PackageIdentifier": "Brave.Brave"
 				},
 				{
-					"PackageIdentifier" : "Casey.Just"
+					"PackageIdentifier": "Casey.Just"
 				},
 				{
-					"PackageIdentifier" : "Discord.Discord"
+					"PackageIdentifier": "Discord.Discord"
 				},
 				{
-					"PackageIdentifier" : "JetBrains.IntelliJIDEA"
+					"PackageIdentifier": "Kubernetes.kubectl"
 				},
 				{
-					"PackageIdentifier" : "Kubernetes.kubectl"
+					"PackageIdentifier": "Microsoft.VisualStudioCode.CLI"
 				},
 				{
-					"PackageIdentifier" : "Microsoft.VisualStudioCode.CLI"
+					"PackageIdentifier": "Microsoft.OneDrive"
 				},
 				{
-					"PackageIdentifier" : "Microsoft.OneDrive"
+					"PackageIdentifier": "SumatraPDF.SumatraPDF"
 				},
 				{
-					"PackageIdentifier" : "SumatraPDF.SumatraPDF"
+					"PackageIdentifier": "JetBrains.Toolbox"
 				},
 				{
-					"PackageIdentifier" : "JetBrains.Toolbox"
+					"PackageIdentifier": "RedHat.Podman-Desktop"
 				},
 				{
-					"PackageIdentifier" : "RedHat.Podman-Desktop"
+					"PackageIdentifier": "Balena.Etcher"
 				},
 				{
-					"PackageIdentifier" : "Balena.Etcher"
+					"PackageIdentifier": "Obsidian.Obsidian"
 				},
 				{
-					"PackageIdentifier" : "Obsidian.Obsidian"
+					"PackageIdentifier": "Element.Element"
 				},
 				{
-					"PackageIdentifier" : "Element.Element"
+					"PackageIdentifier": "jqlang.jq"
 				},
 				{
-					"PackageIdentifier" : "jqlang.jq"
+					"PackageIdentifier": "junegunn.fzf"
 				},
 				{
-					"PackageIdentifier" : "junegunn.fzf"
+					"PackageIdentifier": "Python.Python.3.14"
 				},
 				{
-					"PackageIdentifier" : "Python.Python.3.14"
+					"PackageIdentifier": "Microsoft.VisualStudioCode"
 				},
 				{
-					"PackageIdentifier" : "Microsoft.VisualStudioCode"
+					"PackageIdentifier": "Proton.ProtonDrive"
 				},
 				{
-					"PackageIdentifier" : "Proton.ProtonDrive"
+					"PackageIdentifier": "AgileBits.1Password"
 				},
 				{
-					"PackageIdentifier" : "AgileBits.1Password"
+					"PackageIdentifier": "Canva.Affinity"
 				},
 				{
-					"PackageIdentifier" : "Canva.Affinity"
+					"PackageIdentifier": "Microsoft.AppInstaller"
 				},
 				{
-					"PackageIdentifier" : "Microsoft.AppInstaller"
+					"PackageIdentifier": "Microsoft.DirectX"
 				},
 				{
-					"PackageIdentifier" : "Microsoft.DirectX"
+					"PackageIdentifier": "Microsoft.UI.Xaml.2.7"
 				},
 				{
-					"PackageIdentifier" : "Microsoft.UI.Xaml.2.7"
+					"PackageIdentifier": "Microsoft.UI.Xaml.2.8"
 				},
 				{
-					"PackageIdentifier" : "Microsoft.UI.Xaml.2.8"
+					"PackageIdentifier": "Microsoft.VCLibs.Desktop.14"
 				},
 				{
-					"PackageIdentifier" : "Microsoft.VCLibs.Desktop.14"
+					"PackageIdentifier": "Microsoft.VCLibs.14"
 				},
 				{
-					"PackageIdentifier" : "Microsoft.VCLibs.14"
+					"PackageIdentifier": "Microsoft.WindowsAppRuntime.1.1"
 				},
 				{
-					"PackageIdentifier" : "Microsoft.WindowsAppRuntime.1.1"
+					"PackageIdentifier": "Microsoft.WindowsAppRuntime.1.2"
 				},
 				{
-					"PackageIdentifier" : "Microsoft.WindowsAppRuntime.1.2"
+					"PackageIdentifier": "Microsoft.WindowsAppRuntime.1.3"
 				},
 				{
-					"PackageIdentifier" : "Microsoft.WindowsAppRuntime.1.3"
+					"PackageIdentifier": "Microsoft.WindowsAppRuntime.1.4"
 				},
 				{
-					"PackageIdentifier" : "Microsoft.WindowsAppRuntime.1.4"
+					"PackageIdentifier": "Microsoft.WindowsAppRuntime.1.5"
 				},
 				{
-					"PackageIdentifier" : "Microsoft.WindowsAppRuntime.1.5"
+					"PackageIdentifier": "Microsoft.WindowsAppRuntime.1.6"
 				},
 				{
-					"PackageIdentifier" : "Microsoft.WindowsAppRuntime.1.6"
+					"PackageIdentifier": "Microsoft.WindowsAppRuntime.1.7"
 				},
 				{
-					"PackageIdentifier" : "Microsoft.WindowsAppRuntime.1.7"
+					"PackageIdentifier": "Microsoft.WindowsAppRuntime.1.8"
 				},
 				{
-					"PackageIdentifier" : "Microsoft.WindowsAppRuntime.1.8"
+					"PackageIdentifier": "Microsoft.WindowsTerminal"
 				},
 				{
-					"PackageIdentifier" : "Microsoft.WindowsTerminal"
+					"PackageIdentifier": "Microsoft.WindowsApp"
 				},
 				{
-					"PackageIdentifier" : "Microsoft.WindowsApp"
-				},
-				{
-					"PackageIdentifier" : "Microsoft.WSL"
+					"PackageIdentifier": "Microsoft.WSL"
 				}
 			],
-			"SourceDetails" : 
-			{
-				"Argument" : "https://cdn.winget.microsoft.com/cache",
-				"Identifier" : "Microsoft.Winget.Source_8wekyb3d8bbwe",
-				"Name" : "winget",
-				"Type" : "Microsoft.PreIndexed.Package"
+			"SourceDetails": {
+				"Argument": "https://cdn.winget.microsoft.com/cache",
+				"Identifier": "Microsoft.Winget.Source_8wekyb3d8bbwe",
+				"Name": "winget",
+				"Type": "Microsoft.PreIndexed.Package"
 			}
 		}
 	],
-	"WinGetVersion" : "1.28.220"
+	"WinGetVersion": "1.28.220"
 }
