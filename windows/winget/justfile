@@ -55,7 +55,11 @@ fix-jetbrains-toolbox:
         Write-Host "Removing JetBrains.IntelliJIDEA..." -NoNewline
         $tempFile = "{{WINGET_CONFIG}}.temp"
         Copy-Item -Path {{WINGET_CONFIG}} -Destination $tempFile
-        ( jq --tab 'del( .Sources.[].Packages.[] | select (.PackageIdentifier == "JetBrains.IntelliJIDEA") )' $tempFile ) > {{WINGET_CONFIG}}
+        ( jq `
+            --tab `
+            'del( .Sources.[].Packages.[] | select (.PackageIdentifier == "JetBrains.IntelliJIDEA") )' `
+            $tempFile `
+        ) > {{WINGET_CONFIG}}
         Write-Host "Done"
     } finally {
         Write-Debug "Cleaning $tempFile"
