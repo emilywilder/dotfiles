@@ -2,8 +2,6 @@
 
 set windows-shell := ["pwsh.exe", "-NoLogo", "-Command"]
 
-import 'env.just'
-
 # Windows OS configuration
 [group("modules")]
 mod system
@@ -13,6 +11,9 @@ mod scoop
 # Package management : winget
 [group("modules")]
 mod winget
+# PowerShell configuration
+[group("modules")]
+mod powershell
 
 [private]
 default:
@@ -20,23 +21,4 @@ default:
 
 # Install
 [windows]
-install: profile-install pwsh-dsc pwsh-winget-client scoop::import winget::install
-
-# Install PowerShell PROFILE
-[windows]
-[group("profile")]
-profile-install:
-    Copy-Item -Path {{POWERSHELL_CONFIG_PATH}} -Destination $PROFILE
-
-# install Microsoft.WinGet.Client powershell module
-[windows]
-[group("powershell")]
-pwsh-winget-client:
-    Install-Module -Scope CurrentUser Microsoft.WinGet.Client
-
-# Source: https://learn.microsoft.com/en-us/powershell/dsc/reference/psdscresources/overview?view=dsc-2.0
-# install PSDscResources powershell module
-[windows]
-[group("powershell")]
-pwsh-dsc:
-    Install-Module PSDscResources
+install: powershell::install scoop::import winget::install
