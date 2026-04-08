@@ -20,7 +20,7 @@ default:
 
 # Install
 [windows]
-install: profile-install pwsh-winget-client scoop::import winget::import
+install: profile-install pwsh-dsc pwsh-winget-client scoop::import winget::import
 
 # Uninstall
 [windows]
@@ -43,3 +43,10 @@ profile-uninstall:
 [group("powershell")]
 pwsh-winget-client:
     Install-Module -Scope CurrentUser Microsoft.WinGet.Client
+
+# Source: https://learn.microsoft.com/en-us/powershell/dsc/reference/psdscresources/overview?view=dsc-2.0
+# install PSDscResources powershell module
+[windows]
+[group("powershell")]
+pwsh-dsc:
+    Install-Module PSDscResources
