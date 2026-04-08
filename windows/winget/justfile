@@ -19,16 +19,19 @@ install: import
 
 # export installed packages to WINGET_CONFIG
 [windows]
+[group("winget")]
 export:
     winget export --ignore-warnings -s winget -o {{WINGET_CONFIG}}
 
 # install packages from WINGET_CONFIG export
 [windows]
+[group("winget")]
 import:
     winget import {{WINGET_CONFIG}}
 
 # fix issue with JetBrains IDEA entry when installed through Jetbrains Toolbox
 [windows]
+[group("fixes")]
 [script]
 fix-jetbrains-toolbox:
     try {
