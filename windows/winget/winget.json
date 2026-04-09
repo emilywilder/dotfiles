@@ -1,6 +1,6 @@
 {
 	"$schema": "https://aka.ms/winget-packages.schema.2.0.json",
-	"CreationDate": "2026-04-08T15:43:15.101-00:00",
+	"CreationDate": "2026-04-09T13:29:15.467-00:00",
 	"Sources": [
 		{
 			"Packages": [
@@ -47,6 +47,9 @@
 					"PackageIdentifier": "RedHat.Podman"
 				},
 				{
+					"PackageIdentifier": "Neovim.Neovim"
+				},
+				{
 					"PackageIdentifier": "Malwarebytes.Malwarebytes"
 				},
 				{
@@ -69,9 +72,6 @@
 				},
 				{
 					"PackageIdentifier": "Microsoft.GameInput"
-				},
-				{
-					"PackageIdentifier": "Neovim.Neovim"
 				},
 				{
 					"PackageIdentifier": "Microsoft.VCRedist.2005.x86"
@@ -138,6 +138,9 @@
 				},
 				{
 					"PackageIdentifier": "AgileBits.1Password.CLI"
+				},
+				{
+					"PackageIdentifier": "Atuinsh.Atuin"
 				},
 				{
 					"PackageIdentifier": "Brave.Brave"
