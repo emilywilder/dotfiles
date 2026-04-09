@@ -22,4 +22,7 @@ Set-Variable -Name "nixos_home" -Value "\\wsl.localhost\NixOS\home\$env:username
 # Hooks
 
 ## atuin
-atuin init powershell | Out-String | Invoke-Expression
+if ( Get-Command atuin )
+{
+    atuin init powershell | Out-String | Invoke-Expression
+}
