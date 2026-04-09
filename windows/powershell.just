@@ -35,7 +35,7 @@ modules: mod-winget-client mod-dsc mod-psfzf
 
 [windows]
 [private]
-install-module mod +options:
+install-module mod *options:
     Install-Module {{mod}} {{options}}
 
 # install Microsoft.WinGet.Client powershell module
