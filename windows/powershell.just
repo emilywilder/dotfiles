@@ -31,7 +31,7 @@ profile:
 # PowerShell modules
 [windows]
 [private]
-modules: mod-winget-client mod-dsc
+modules: mod-winget-client mod-dsc mod-psfzf
 
 # install Microsoft.WinGet.Client powershell module
 [windows]
@@ -45,3 +45,9 @@ mod-winget-client:
 [group("modules")]
 mod-dsc:
     Install-Module PSDscResources
+
+# install PSFzf powershell module
+[windows]
+[group("modules")]
+mod-psfzf:
+    Install-Module -Name PSFzf

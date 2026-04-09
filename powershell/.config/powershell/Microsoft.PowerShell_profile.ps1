@@ -26,3 +26,10 @@ if ( Get-Command atuin )
 {
     atuin init powershell | Out-String | Invoke-Expression
 }
+
+## fzf
+if ( Get-InstalledModule -Name PSFzf )
+{
+    Set-PSReadLineKeyHandler -Key Tab -ScriptBlock { Invoke-FzfTabCompletion }
+    Set-PsFzfOption -TabCompletionPreviewWindow 'right|down|hidden'
+}
