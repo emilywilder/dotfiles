@@ -1,6 +1,7 @@
 #!/usr/bin/env just --justfile
 
 set windows-shell := ["pwsh.exe", "-NoLogo", "-Command"]
+set script-interpreter := ["pwsh.exe", "-NoLogo", "-Command"]
 
 POWERSHELL_CONFIG_PATH := join( \
     justfile_directory(), \
@@ -35,8 +36,14 @@ modules: mod-winget-client mod-dsc mod-psfzf
 
 [windows]
 [private]
-install-module mod *options:
-    Install-Module {{mod}} {{options}}
+[script]
+install-module name *options:
+    if ( Get-InstalledModule {{name}} )
+    {
+        Write-Output "{{name}} already installed. Skipping..."
+    } else {
+        Install-Module {{name}} {{options}}
+    }
 
 # install Microsoft.WinGet.Client powershell module
 [windows]
