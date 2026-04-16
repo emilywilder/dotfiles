@@ -44,12 +44,12 @@ if ( [Environment]::UserInteractive )
     Set-Hooks
 
     function prompt {
-        $rn = [System.Environment]::NewLine # or `r`n
         $n = [System.Environment]::UserName
         $m = [System.Environment]::MachineName
         $d = "$(Get-Location)"
 
-        $d + $rn +
-                $n + "@" + $m + " % "
+        Write-Host $d -ForegroundColor Green
+        Write-Host "$n@$m %" -NoNewline -ForegroundColor White
+        return " "
     }
 }
