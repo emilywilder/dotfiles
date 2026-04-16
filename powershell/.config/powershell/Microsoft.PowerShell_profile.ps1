@@ -42,4 +42,14 @@ if ( [Environment]::UserInteractive )
     Set-Readline
     Set-Variables
     Set-Hooks
+
+    function prompt {
+        $rn = [System.Environment]::NewLine # or `r`n
+        $n = [System.Environment]::UserName
+        $m = [System.Environment]::MachineName
+        $d = "$(Get-Location)"
+
+        $d + $rn +
+                $n + "@" + $m + " % "
+    }
 }
