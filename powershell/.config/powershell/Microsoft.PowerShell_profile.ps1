@@ -37,6 +37,22 @@ function Set-Hooks
     }
 }
 
+function Get-PromptHash
+{
+    $identity = [Security.Principal.WindowsIdentity]::GetCurrent()
+    $principal = [Security.Principal.WindowsPrincipal] $identity
+    $adminRole = [Security.Principal.WindowsBuiltInRole]::Administrator
+
+    if ($principal.IsInRole($adminRole))
+    {
+        return "#"
+    }
+    else
+    {
+        return "%"
+    }
+}
+
 if ( [Environment]::UserInteractive )
 {
     Set-Readline
@@ -47,9 +63,10 @@ if ( [Environment]::UserInteractive )
         $n = [System.Environment]::UserName
         $m = [System.Environment]::MachineName
         $d = "$(Get-Location)"
+        $hash = "$(Get-PromptHash)"
 
         Write-Host $d -ForegroundColor Green
-        Write-Host "$n@$m %" -NoNewline -ForegroundColor White
+        Write-Host "$n@$m $hash" -NoNewline -ForegroundColor White
         return " "
     }
 }
