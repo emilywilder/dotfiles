@@ -24,17 +24,11 @@ function Set-Variables
 function Set-Hooks
 {
     ## atuin
-    if (Get-Command atuin)
-    {
-        atuin init powershell | Out-String | Invoke-Expression
-    }
+    atuin init powershell | Out-String | Invoke-Expression
 
     ## fzf
-    if (Get-InstalledModule PSFzf)
-    {
-        Set-PSReadLineKeyHandler -Key Tab -ScriptBlock { Invoke-FzfTabCompletion }
-        Set-PsFzfOption -TabCompletionPreviewWindow 'right|down|hidden'
-    }
+    Set-PSReadLineKeyHandler -Key Tab -ScriptBlock { Invoke-FzfTabCompletion }
+    Set-PsFzfOption -TabCompletionPreviewWindow 'right|down|hidden'
 }
 
 function Get-PromptHash
