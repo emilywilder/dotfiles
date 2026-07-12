@@ -2,9 +2,10 @@
 
 set shell := ["zsh", "-cu"]
 set unstable # for which()
+set lists
 
 # WSL switches
-platform := if which('wslinfo') != "" { "wsl" } else { os() }
+platform := if which('wslinfo') != [] { "wsl" } else { os() }
 export GIT_SSH :=  if platform == "wsl" { "ssh.exe" } else { "ssh" }
 
 git_local_config := "local.config"

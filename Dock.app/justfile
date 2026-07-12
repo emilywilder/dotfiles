@@ -1,6 +1,7 @@
 #!/usr/bin/env just --justfile
 
 set unstable
+set lists
 set shell := ["zsh", "-cu"]
 set script-interpreter := ["zsh"]
 
