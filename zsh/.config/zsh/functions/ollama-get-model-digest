@@ -1,0 +1,12 @@
+#!/bin/zsh
+
+set -o pipefail
+
+local -r MODEL_NAME="${1}"
+local -r OLLAMA_LIBRARY_DIR=${HOME}/.ollama/models/manifests/registry.ollama.ai/library
+# translate the model name to ollama's directory path : => /
+local -r OLLAMA_MODEL_MANIFEST=${OLLAMA_LIBRARY_DIR}/${MODEL_NAME:gs/:/\/}
+
+cat ${OLLAMA_MODEL_MANIFEST} \
+  | jq --raw-output '.layers.[]
+    | select(.mediaType == "application/vnd.ollama.image.model").digest'

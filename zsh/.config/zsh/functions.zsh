@@ -9,6 +9,7 @@ fpath+=($ZSH_FUNCTIONS_BASEDIR)
         nix
         python
         magick
+        ollama
     )
 
     # hosts
@@ -22,6 +23,7 @@ fpath+=($ZSH_FUNCTIONS_BASEDIR)
     readonly functions_nix=(nix-deps nix-get-pname nix-get-flake-outpaths nix-search-names)
     readonly functions_python=(python_ensurepip pip_updateall)
     readonly functions_magick=(image2ico)
+    readonly functions_ollama=(ollama-get-model-digest)
 
     local functions_to_load=()
 
