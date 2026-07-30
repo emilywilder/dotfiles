@@ -26,7 +26,7 @@ install: unix-install
 
 # Uninstall Linux configuration.
 [linux]
-uninstall: unix-install
+uninstall: unix-uninstall
 
 # Install macOS configuration.
 [macos]
