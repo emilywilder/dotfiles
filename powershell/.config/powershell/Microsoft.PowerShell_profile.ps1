@@ -29,7 +29,8 @@ function Set-Hooks
     ## fzf
     Set-PSReadLineKeyHandler -Key Tab -ScriptBlock { Invoke-FzfTabCompletion }
     # FIXME: this increases load time and causes CLI content rendering issues
-    # Set-PsFzfOption -TabCompletionPreviewWindow 'right|down|hidden'
+    # Possibly https://github.com/kelleyma49/PSFzf/issues/380
+    #Set-PsFzfOption -TabCompletionPreviewWindow 'right|down|hidden'
 }
 
 function Get-PromptHash
