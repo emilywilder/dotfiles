@@ -1,0 +1,617 @@
+$schema: https://raw.githubusercontent.com/PowerShell/DSC/main/schemas/2023/08/config/document.json
+
+metadata:
+  winget:
+    processor:
+      identifier: dscv3
+
+resources:
+  - type: Microsoft.WinGet/Package
+    name: PowerShell
+    properties:
+      id: Microsoft.PowerShell
+      source: winget
+      useLatest: true
+    metadata:
+      description: Install PowerShell 7
+
+  - type: Microsoft.WinGet/Package
+    name: 7-Zip
+    properties:
+      id: 7zip.7zip
+      source: winget
+
+  - type: Microsoft.WinGet/Package
+    name: CPUID ROG CPU-Z
+    properties:
+      id: CPUID.CPU-Z.ROG
+      source: winget
+
+  - type: Microsoft.WinGet/Package
+    name: Git
+    properties:
+      id: Git.Git
+      source: winget
+
+  - type: Microsoft.WinGet/Package
+    name: ImageMagick Q16-HDRI
+    properties:
+      id: ImageMagick.ImageMagick
+      source: winget
+
+  - type: Microsoft.WinGet/Package
+    name: LyX
+    properties:
+      id: LyX.LyX
+      source: winget
+
+  - type: Microsoft.WinGet/Package
+    name: Mozilla Firefox (en-US)
+    properties:
+      id: Mozilla.Firefox
+      source: winget
+
+  - type: Microsoft.WinGet/Package
+    name: Mozilla Thunderbird (en-US)
+    properties:
+      id: Mozilla.Thunderbird
+      source: winget
+
+  - type: Microsoft.WinGet/Package
+    name: Proton Mail Bridge
+    properties:
+      id: Proton.ProtonMailBridge
+      source: winget
+
+  - type: Microsoft.WinGet/Package
+    name: TeXstudio
+    properties:
+      id: TeXstudio.TeXstudio
+      source: winget
+
+  - type: Microsoft.WinGet/Package
+    name: VLC media player
+    properties:
+      id: VideoLAN.VLC
+      source: winget
+
+  - type: Microsoft.WinGet/Package
+    name: GNU Emacs
+    properties:
+      id: GNU.Emacs
+      source: winget
+
+  - type: Microsoft.WinGet/Package
+    name: Microsoft Visual C++ 2010 x64 Redistributable
+    properties:
+      id: Microsoft.VCRedist.2010.x64
+      source: winget
+
+  - type: Microsoft.WinGet/Package
+    name: Malwarebytes Anti-Malware
+    properties:
+      id: Malwarebytes.Malwarebytes
+      source: winget
+
+  - type: Microsoft.WinGet/Package
+    name: Podman
+    properties:
+      id: RedHat.Podman
+      source: winget
+
+  - type: Microsoft.WinGet/Package
+    name: Neovim
+    properties:
+      id: Neovim.Neovim
+      source: winget
+
+  - type: Microsoft.WinGet/Package
+    name: gsudo
+    properties:
+      id: gerardog.gsudo
+      source: winget
+
+  - type: Microsoft.WinGet/Package
+    name: PeaZip
+    properties:
+      id: Giorgiotani.Peazip
+      source: winget
+
+  - type: Microsoft.WinGet/Package
+    name: LibreOffice
+    properties:
+      id: TheDocumentFoundation.LibreOffice
+      source: winget
+
+  - type: Microsoft.WinGet/Package
+    name: Microsoft Visual C++ 2008 Redistributable - x64
+    properties:
+      id: Microsoft.VCRedist.2008.x64
+      source: winget
+
+  - type: Microsoft.WinGet/Package
+    name: GOG GALAXY
+    properties:
+      id: GOG.Galaxy
+      source: winget
+
+  - type: Microsoft.WinGet/Package
+    name: PlayStation Accessories
+    properties:
+      id: PlayStation.PlayStationAccessories
+      source: winget
+
+  - type: Microsoft.WinGet/Package
+    name: Corsair iCUE5 Software
+    properties:
+      id: Corsair.iCUE.5
+      source: winget
+
+  - type: Microsoft.WinGet/Package
+    name: Microsoft GameInput
+    properties:
+      id: Microsoft.GameInput
+      source: winget
+
+  - type: Microsoft.WinGet/Package
+    name: WinDirStat
+    properties:
+      id: WinDirStat.WinDirStat
+      source: winget
+
+  - type: Microsoft.WinGet/Package
+    name: Microsoft Visual C++ 2005 Redistributable (x86)
+    properties:
+      id: Microsoft.VCRedist.2005.x86
+      source: winget
+
+  - type: Microsoft.WinGet/Package
+    name: Battle.net Setup
+    properties:
+      id: Blizzard.BattleNet
+      source: winget
+
+  - type: Microsoft.WinGet/Package
+    name: Microsoft Edge
+    properties:
+      id: Microsoft.Edge
+      source: winget
+
+  - type: Microsoft.WinGet/Package
+    name: OpenAL
+    properties:
+      id: CreativeTechnology.OpenAL
+      source: winget
+
+  - type: Microsoft.WinGet/Package
+    name: RetroArch
+    properties:
+      id: Libretro.RetroArch
+      source: winget
+
+  - type: Microsoft.WinGet/Package
+    name: Steam
+    properties:
+      id: Valve.Steam
+      source: winget
+
+  - type: Microsoft.WinGet/Package
+    name: Wireshark
+    properties:
+      id: WiresharkFoundation.Wireshark
+      source: winget
+
+  - type: Microsoft.WinGet/Package
+    name: Microsoft Visual C++ 2013 Redistributable (x64)
+    properties:
+      id: Microsoft.VCRedist.2013.x64
+      source: winget
+
+  - type: Microsoft.WinGet/Package
+    name: Microsoft Visual C++ v14 Redistributable (x64)
+    properties:
+      id: Microsoft.VCRedist.2015+.x64
+      source: winget
+
+  - type: Microsoft.WinGet/Package
+    name: Microsoft .NET Framework 4.6.2 Developer Pack
+    properties:
+      id: Microsoft.DotNet.Framework.DeveloperPack.4.6
+      source: winget
+
+  - type: Microsoft.WinGet/Package
+    name: Microsoft .NET Windows Desktop Runtime 8.0
+    properties:
+      id: Microsoft.DotNet.DesktopRuntime.8
+      source: winget
+
+  - type: Microsoft.WinGet/Package
+    name: Microsoft .NET Runtime 6.0
+    properties:
+      id: Microsoft.DotNet.Runtime.6
+      source: winget
+
+  - type: Microsoft.WinGet/Package
+    name: Microsoft .NET Runtime 8.0
+    properties:
+      id: Microsoft.DotNet.Runtime.8
+      source: winget
+
+  - type: Microsoft.WinGet/Package
+    name: Microsoft Visual C++ 2012 Redistributable (x86)
+    properties:
+      id: Microsoft.VCRedist.2012.x86
+      source: winget
+
+  - type: Microsoft.WinGet/Package
+    name: TechPowerUp GPU-Z
+    properties:
+      id: TechPowerUp.GPU-Z
+      source: winget
+
+  - type: Microsoft.WinGet/Package
+    name: Microsoft Visual C++ 2008 Redistributable - x86
+    properties:
+      id: Microsoft.VCRedist.2008.x86
+      source: winget
+
+  - type: Microsoft.WinGet/Package
+    name: Microsoft Visual C++ v14 Redistributable (x86)
+    properties:
+      id: Microsoft.VCRedist.2015+.x86
+      source: winget
+
+  - type: Microsoft.WinGet/Package
+    name: Microsoft Visual C++ 2013 Redistributable (x86)
+    properties:
+      id: Microsoft.VCRedist.2013.x86
+      source: winget
+
+  - type: Microsoft.WinGet/Package
+    name: Microsoft XNA Framework Redistributable Refresh
+    properties:
+      id: Microsoft.XNARedist
+      source: winget
+
+  - type: Microsoft.WinGet/Package
+    name: Microsoft Visual C++ 2010 x86 Redistributable
+    properties:
+      id: Microsoft.VCRedist.2010.x86
+      source: winget
+
+  - type: Microsoft.WinGet/Package
+    name: Microsoft .NET Windows Desktop Runtime 10.0
+    properties:
+      id: Microsoft.DotNet.DesktopRuntime.10
+      source: winget
+
+  - type: Microsoft.WinGet/Package
+    name: NVIDIA PhysX (Legacy)
+    properties:
+      id: Nvidia.PhysXLegacy
+      source: winget
+
+  - type: Microsoft.WinGet/Package
+    name: Microsoft Visual C++ 2012 Redistributable (x64)
+    properties:
+      id: Microsoft.VCRedist.2012.x64
+      source: winget
+
+  - type: Microsoft.WinGet/Package
+    name: 1Password CLI
+    properties:
+      id: AgileBits.1Password.CLI
+      source: winget
+
+  - type: Microsoft.WinGet/Package
+    name: Claude Code
+    properties:
+      id: Anthropic.ClaudeCode
+      source: winget
+
+  - type: Microsoft.WinGet/Package
+    name: Atuin
+    properties:
+      id: Atuinsh.Atuin
+      source: winget
+
+  - type: Microsoft.WinGet/Package
+    name: Brave
+    properties:
+      id: Brave.Brave
+      source: winget
+
+  - type: Microsoft.WinGet/Package
+    name: Just
+    properties:
+      id: Casey.Just
+      source: winget
+
+  - type: Microsoft.WinGet/Package
+    name: Discord
+    properties:
+      id: Discord.Discord
+      source: winget
+
+  - type: Microsoft.WinGet/Package
+    name: Kubernetes CLI
+    properties:
+      id: Kubernetes.kubectl
+      source: winget
+
+  - type: Microsoft.WinGet/Package
+    name: Meld
+    properties:
+      id: Meld.Meld
+      source: winget
+
+  - type: Microsoft.WinGet/Package
+    name: NuGet
+    properties:
+      id: Microsoft.NuGet
+      source: winget
+
+  - type: Microsoft.WinGet/Package
+    name: Microsoft Visual Studio Code CLI
+    properties:
+      id: Microsoft.VisualStudioCode.CLI
+      source: winget
+
+  - type: Microsoft.WinGet/Package
+    name: Microsoft OneDrive
+    properties:
+      id: Microsoft.OneDrive
+      source: winget
+
+  - type: Microsoft.WinGet/Package
+    name: SumatraPDF
+    properties:
+      id: SumatraPDF.SumatraPDF
+      source: winget
+
+  - type: Microsoft.WinGet/Package
+    name: JetBrains Toolbox
+    properties:
+      id: JetBrains.Toolbox
+      source: winget
+
+  - type: Microsoft.WinGet/Package
+    name: Vim
+    properties:
+      id: vim.vim
+      source: winget
+
+  - type: Microsoft.WinGet/Package
+    name: XIVLauncher
+    properties:
+      id: goatcorp.XIVLauncher
+      source: winget
+
+  - type: Microsoft.WinGet/Package
+    name: Podman Desktop
+    properties:
+      id: RedHat.Podman-Desktop
+      source: winget
+
+  - type: Microsoft.WinGet/Package
+    name: balenaEtcher
+    properties:
+      id: Balena.Etcher
+      source: winget
+
+  - type: Microsoft.WinGet/Package
+    name: Obsidian
+    properties:
+      id: Obsidian.Obsidian
+      source: winget
+
+  - type: Microsoft.WinGet/Package
+    name: LM Studio
+    properties:
+      id: ElementLabs.LMStudio
+      source: winget
+
+  - type: Microsoft.WinGet/Package
+    name: Zettlr
+    properties:
+      id: Zettlr.Zettlr
+      source: winget
+
+  - type: Microsoft.WinGet/Package
+    name: Element
+    properties:
+      id: Element.Element
+      source: winget
+
+  - type: Microsoft.WinGet/Package
+    name: jq
+    properties:
+      id: jqlang.jq
+      source: winget
+
+  - type: Microsoft.WinGet/Package
+    name: fzf
+    properties:
+      id: junegunn.fzf
+      source: winget
+
+  - type: Microsoft.WinGet/Package
+    name: Ollama
+    properties:
+      id: Ollama.Ollama
+      source: winget
+
+  - type: Microsoft.WinGet/Package
+    name: Microsoft Visual Studio Code
+    properties:
+      id: Microsoft.VisualStudioCode
+      source: winget
+
+  - type: Microsoft.WinGet/Package
+    name: Python 3.14
+    properties:
+      id: Python.Python.3.14
+      source: winget
+
+  - type: Microsoft.WinGet/Package
+    name: Proton Drive
+    properties:
+      id: Proton.ProtonDrive
+      source: winget
+
+  - type: Microsoft.WinGet/Package
+    name: 1Password
+    properties:
+      id: AgileBits.1Password
+      source: winget
+
+  - type: Microsoft.WinGet/Package
+    name: Affinity
+    properties:
+      id: Canva.Affinity
+      source: winget
+
+  - type: Microsoft.WinGet/Package
+    name: Chroma Control
+    properties:
+      id: AndrewAlanBabbitt.ChromaControl
+      source: winget
+
+  - type: Microsoft.WinGet/Package
+    name: Meld Studio
+    properties:
+      id: MeldStudio.MeldStudio
+      source: winget
+
+  - type: Microsoft.WinGet/Package
+    name: App Installer
+    properties:
+      id: Microsoft.AppInstaller
+      source: winget
+
+  - type: Microsoft.WinGet/Package
+    name: DirectX End-User Runtime Installer
+    properties:
+      id: Microsoft.DirectX
+      source: winget
+
+  - type: Microsoft.WinGet/Package
+    name: Microsoft .NET Native Runtime
+    properties:
+      id: Microsoft.DotNet.Native.Runtime
+      source: winget
+
+  - type: Microsoft.WinGet/Package
+    name: Outlook for Windows
+    properties:
+      id: Microsoft.Outlook
+      source: winget
+
+  - type: Microsoft.WinGet/Package
+    name: Microsoft.UI.Xaml.2.6
+    properties:
+      id: Microsoft.UI.Xaml.2.6
+      source: winget
+
+  - type: Microsoft.WinGet/Package
+    name: Microsoft.UI.Xaml.2.7
+    properties:
+      id: Microsoft.UI.Xaml.2.7
+      source: winget
+
+  - type: Microsoft.WinGet/Package
+    name: Microsoft.UI.Xaml.2.8
+    properties:
+      id: Microsoft.UI.Xaml.2.8
+      source: winget
+
+  - type: Microsoft.WinGet/Package
+    name: Microsoft Visual C++ 2015 UWP Desktop Runtime Package
+    properties:
+      id: Microsoft.VCLibs.Desktop.14
+      source: winget
+
+  - type: Microsoft.WinGet/Package
+    name: Microsoft Visual C++ 2015 UWP Runtime Package
+    properties:
+      id: Microsoft.VCLibs.14
+      source: winget
+
+  - type: Microsoft.WinGet/Package
+    name: Windows App SDK 1.1
+    properties:
+      id: Microsoft.WindowsAppRuntime.1.1
+      source: winget
+
+  - type: Microsoft.WinGet/Package
+    name: Windows App SDK 1.2
+    properties:
+      id: Microsoft.WindowsAppRuntime.1.2
+      source: winget
+
+  - type: Microsoft.WinGet/Package
+    name: Windows App SDK 1.3
+    properties:
+      id: Microsoft.WindowsAppRuntime.1.3
+      source: winget
+
+  - type: Microsoft.WinGet/Package
+    name: Windows App SDK 1.4
+    properties:
+      id: Microsoft.WindowsAppRuntime.1.4
+      source: winget
+
+  - type: Microsoft.WinGet/Package
+    name: Windows App SDK 1.5
+    properties:
+      id: Microsoft.WindowsAppRuntime.1.5
+      source: winget
+
+  - type: Microsoft.WinGet/Package
+    name: Windows App SDK 1.6
+    properties:
+      id: Microsoft.WindowsAppRuntime.1.6
+      source: winget
+
+  - type: Microsoft.WinGet/Package
+    name: Windows App SDK 1.7
+    properties:
+      id: Microsoft.WindowsAppRuntime.1.7
+      source: winget
+
+  - type: Microsoft.WinGet/Package
+    name: Windows App SDK 1.8
+    properties:
+      id: Microsoft.WindowsAppRuntime.1.8
+      source: winget
+
+  - type: Microsoft.WinGet/Package
+    name: Windows App Runtime 2.0
+    properties:
+      id: Microsoft.WindowsAppRuntime.2
+      source: winget
+
+  - type: Microsoft.WinGet/Package
+    name: Windows Terminal
+    properties:
+      id: Microsoft.WindowsTerminal
+      source: winget
+
+  - type: Microsoft.WinGet/Package
+    name: Windows App
+    properties:
+      id: Microsoft.WindowsApp
+      source: winget
+
+  - type: Microsoft.WinGet/Package
+    name: Windows Subsystem for Linux
+    properties:
+      id: Microsoft.WSL
+      source: winget
+
+  - type: Microsoft.WinGet/Package
+    name: DesiredStateConfiguration
+    properties:
+      id: 9NVTPZWRC6KQ
+      source: msstore
+
