@@ -4,6 +4,7 @@ set windows-shell := ["pwsh.exe", "-NoLogo", "-Command"]
 set shell := ["zsh", "-cu"]
 
 # Module for GNU stow recipes.
+[unix]
 [group("modules")]
 mod stow
 # Module for git recipes.
