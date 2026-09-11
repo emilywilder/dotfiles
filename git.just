@@ -1,6 +1,7 @@
 #!/usr/bin/env just --justfile
 
 set shell := ["zsh", "-cu"]
+set windows-shell := ["pwsh.exe", "-NoLogo", "-Command"]
 set unstable # for which()
 set lists
 
@@ -20,8 +21,13 @@ default:
 link-gitconfig:
     ln -sf {{platform}}.config {{git_local_config}}
 
+# Add platform specific git config options.
+[windows]
+[working-directory: "git/.config/git"]
+link-gitconfig:
+    New-Item -ItemType HardLink -Path "{{git_local_config}}" -Value "{{platform}}.config"
+
 # Remove localized git config options.
-[unix]
 [working-directory: "git/.config/git"]
 unlink-gitconfig:
     rm {{git_local_config}}
