@@ -43,6 +43,7 @@ update-submodules: initialize-submodules
     @git submodule update --remote --merge
 
 # Do a sparse checkout of each submodule.
+[unix]
 [group("repo")]
 sparse-checkout: update-submodules
     @git submodule foreach '$toplevel/sparse-checkout.sh'
