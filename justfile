@@ -1,6 +1,5 @@
 #!/usr/bin/env just --justfile
 
-set windows-shell := ["pwsh.exe", "-NoLogo", "-Command"]
 set shell := ["zsh", "-cu"]
 
 # Module for GNU stow recipes.
@@ -10,9 +9,6 @@ mod stow
 # Module for git recipes.
 [group("modules")]
 mod git
-# Module for Windows specific recipes.
-[group("modules")]
-mod windows
 
 [private]
 default:
@@ -33,10 +29,6 @@ install: unix-install
 # Uninstall macOS configuration.
 [macos]
 uninstall: unix-uninstall
-
-# Install Windows configuration.
-[windows]
-install: windows::install
 
 [private]
 [unix]
