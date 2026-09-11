@@ -16,3 +16,5 @@
 	format = ssh
 [include]
     path = local.config
+[gpg "ssh"]
+	allowedSignersFile = ~/.config/git/allowed_signers
