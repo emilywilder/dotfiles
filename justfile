@@ -12,9 +12,6 @@ mod git
 # Module for Windows specific recipes.
 [group("modules")]
 mod windows
-# Module for macOS Dock.app recipes.
-[group("modules")]
-mod Dock "Dock.app"
 
 [private]
 default:
@@ -30,11 +27,11 @@ uninstall: unix-uninstall
 
 # Install macOS configuration.
 [macos]
-install: unix-install Dock::install
+install: unix-install
 
 # Uninstall macOS configuration.
 [macos]
-uninstall: unix-uninstall Dock::uninstall
+uninstall: unix-uninstall
 
 # Install Windows configuration.
 [windows]
