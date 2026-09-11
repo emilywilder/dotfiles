@@ -17,14 +17,14 @@ default:
 # Add platform specific git config options.
 [unix]
 [working-directory: "git/.config/git"]
-unlink-gitconfig:
-    rm {{git_local_config}}
+link-gitconfig:
+    ln -sf {{platform}}.config {{git_local_config}}
 
 # Remove localized git config options.
 [unix]
 [working-directory: "git/.config/git"]
-link-gitconfig:
-    ln -sf {{platform}}.config {{git_local_config}}
+unlink-gitconfig:
+    rm {{git_local_config}}
 
 # Initialize submodules.
 [group("repo")]
