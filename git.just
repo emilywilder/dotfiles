@@ -7,7 +7,7 @@ set lists
 
 # WSL switches
 platform := if which('wslinfo') != [] { "wsl" } else { os() }
-export GIT_SSH :=  if platform == "wsl" { "ssh.exe" } else { "ssh" }
+export GIT_SSH := if platform == "wsl" { "ssh.exe" } else { "ssh" }
 
 git_local_config := "local.config"
 
