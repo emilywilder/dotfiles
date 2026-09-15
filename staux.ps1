@@ -16,6 +16,17 @@ Write-Debug "Restow: ${Restow}"
 Write-Debug "Delete: ${Delete}"
 Write-Debug "Packages: ${Packages}"
 
-Write-Verbose "Using action '$($PSCmdlet.ParameterSetName)'"
-
-throw [NotImplementedException] "Not meant for use in a live system."
+switch ($PSCmdlet.ParameterSetName)
+{
+    'Restow' {
+        Write-Verbose "Using action Restow"
+        throw [System.NotImplementedException] "Not implemented."
+    }
+    'Delete' {
+        Write-Verbose "Using action Delete"
+        throw [System.NotImplementedException] "Not implemented."
+    }
+    Default {
+        Write-Error "No supported action specified." -ErrorAction Stop
+    }
+}
