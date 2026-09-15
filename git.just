@@ -2,7 +2,7 @@
 
 set shell := ["zsh", "-cu"]
 set windows-shell := ["pwsh.exe", "-NoLogo", "-Command"]
-set unstable # for which()
+set unstable # for which() and lists
 set lists
 
 # WSL switches
