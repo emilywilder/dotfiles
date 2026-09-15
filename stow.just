@@ -1,5 +1,8 @@
 #!/usr/bin/env just --justfile
 
+set unstable
+set lists
+set dotenv-load := true
 [unix]
 set shell := ["zsh", "-cu"]
 [unix]
@@ -8,7 +11,8 @@ set script-interpreter := ["zsh"]
 [windows]
 set shell := ["pwsh.exe", "-NoLogo", "-Command"]
 
-staux := "./staux.ps1 -Debug"
+staux := "./staux.ps1" + \
+    if env('DEBUG', 'false') == "true" { ' -Debug' } else { '' }
 
 [private]
 default:
