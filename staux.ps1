@@ -2,8 +2,8 @@
 Param (
     $Dir = ".",
     $Target = "$Dir/..",
-    [Parameter(ParameterSetName='Restaux')]
-    [Switch]$Restaux,
+    [Parameter(ParameterSetName='Restow')]
+    [Switch]$Restow,
     [Parameter(ParameterSetName='Delete')]
     [Switch]$Delete,
     [Parameter(Mandatory, ValueFromRemainingArguments, Position=0)]
@@ -12,7 +12,7 @@ Param (
 
 Write-Debug "Dir: ${Dir}"
 Write-Debug "Target: ${Target}"
-Write-Debug "Restaux: ${Restaux}"
+Write-Debug "Restow: ${Restow}"
 Write-Debug "Delete: ${Delete}"
 Write-Debug "Packages: ${Packages}"
 

@@ -24,7 +24,7 @@ restow +PKGS="*/":
 [windows]
 [group("staux")]
 restow +PKGS="*/":
-    {{staux}} -Verbose -Target "${HOME}" -Restaux {{PKGS}}
+    {{staux}} -Verbose -Target "${HOME}" -Restow {{PKGS}}
 
 # Delete packages from $HOME.
 [unix]
