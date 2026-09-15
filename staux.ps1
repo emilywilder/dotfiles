@@ -16,4 +16,6 @@ Write-Debug "Restow: ${Restow}"
 Write-Debug "Delete: ${Delete}"
 Write-Debug "Packages: ${Packages}"
 
+Write-Verbose "Using action '$($PSCmdlet.ParameterSetName)'"
+
 throw [NotImplementedException] "Not meant for use in a live system."
