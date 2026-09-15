@@ -10,26 +10,26 @@ default:
 # Restow packages to $HOME.
 [unix]
 [group("stow")]
-restow +FILES="*/":
-    @stow --verbose --target="${HOME}" --restow {{FILES}}
+restow +PKGS="*/":
+    @stow --verbose --target="${HOME}" --restow {{PKGS}}
 
 # Delete packages from $HOME.
 [unix]
 [group("stow")]
-delete +FILES="*/":
-    @stow --verbose --target="${HOME}" --delete {{FILES}}
+delete +PKGS="*/":
+    @stow --verbose --target="${HOME}" --delete {{PKGS}}
 
 # Adopt and stow packages to $HOME.
 [unix]
 [group("stow")]
-adopt +FILES="*/":
-    @stow --verbose --target="${HOME}" --adopt {{FILES}}
+adopt +PKGS="*/":
+    @stow --verbose --target="${HOME}" --adopt {{PKGS}}
 
 # Check if any files exist that would cause stow to fail.
 [unix]
 [script]
-check +FILES="*/":
-    for _d in {{FILES}} ; do
+check +PKGS="*/":
+    for _d in {{PKGS}} ; do
         # only look at stow packages
         if [ ! -f ${_d}/.stow-local-ignore ]; then
             _pkg="${_d:t}"
