@@ -14,27 +14,27 @@ staux := "./staux.ps1 -Debug"
 default:
     @just --list stow
 
-# Restow packages to $HOME. (GNU stow)
+# Restow packages to $HOME.
 [unix]
 [group("stow")]
 restow +PKGS="*/":
     @stow --verbose --target="${HOME}" --restow {{PKGS}}
 
-# Restow packages to $HOME. (staux)
+# Restow packages to $HOME.
 [windows]
-[group("stow")]
+[group("staux")]
 restow +PKGS="*/":
     {{staux}} -Verbose -Target "${HOME}" -Restaux {{PKGS}}
 
-# Delete packages from $HOME. (GNU stow)
+# Delete packages from $HOME.
 [unix]
 [group("stow")]
 delete +PKGS="*/":
     @stow --verbose --target="${HOME}" --delete {{PKGS}}
 
-# Delete packages from $HOME. (staux)
+# Delete packages from $HOME.
 [windows]
-[group("stow")]
+[group("staux")]
 delete +PKGS="*/":
     {{staux}} -Verbose -Target "${HOME}" -Delete {{PKGS}}
 
