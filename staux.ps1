@@ -1,17 +1,20 @@
 [CmdletBinding()]
 Param (
-    $Dir = ".",
-    $Target = "$Dir/..",
+    $Dir = ".",             # stow directory
+    $Target = "$Dir/..",    # target directory
+    [Parameter(ParameterSetName='Stow')]
+    [Switch]$Stow,
     [Parameter(ParameterSetName='Restow')]
     [Switch]$Restow,
     [Parameter(ParameterSetName='Delete')]
     [Switch]$Delete,
     [Parameter(Mandatory, ValueFromRemainingArguments, Position=0)]
-    [String[]]$Packages
+    [String[]]$Packages     # package(s)
 )
 
 Write-Debug "Dir: ${Dir}"
 Write-Debug "Target: ${Target}"
+Write-Debug "Stow: ${Stow}"
 Write-Debug "Restow: ${Restow}"
 Write-Debug "Delete: ${Delete}"
 Write-Debug "Packages: ${Packages}"
@@ -96,13 +99,17 @@ function Install-Package() {
 
 switch ($PSCmdlet.ParameterSetName)
 {
-    'Restow' {
-        Write-Verbose "Using action Restow"
+    'Stow' {
+        Write-Verbose "Using action Stow"
         Write-Debug "Planning stow of: $Packages ..."
         $Packages | Resolve-BournePath | Install-Package
     }
     'Delete' {
         Write-Verbose "Using action Delete"
+        throw [System.NotImplementedException] "Not implemented."
+    }
+    'Restow' {
+        Write-Verbose "Using action Restow"
         throw [System.NotImplementedException] "Not implemented."
     }
     Default {
