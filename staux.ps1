@@ -76,11 +76,30 @@ function Resolve-BournePath {
     }
 }
 
+function Install-Package() {
+    param(
+        [Parameter(Position = 0,
+                ParameterSetName = "Package",
+                Mandatory = $true,
+                ValueFromPipeline = $true,
+                ValueFromPipelineByPropertyName = $true)]
+        [String[]]
+        $Package
+    )
+
+    process {
+        $Package | % {
+            Write-Debug("Planning stow of package $_...")
+        }
+    }
+}
+
 switch ($PSCmdlet.ParameterSetName)
 {
     'Restow' {
         Write-Verbose "Using action Restow"
-        $Packages | Resolve-BournePath
+        Write-Debug "Planning stow of: $Packages ..."
+        $Packages | Resolve-BournePath | Install-Package
     }
     'Delete' {
         Write-Verbose "Using action Delete"
