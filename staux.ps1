@@ -95,24 +95,24 @@ function Install-Contents() {
 
         [Parameter(Mandatory)]
         [String[]]
-        $ContentPath
+        $NodePath
     )
 
-    $PackagePath = Join-Path $StowPath $Package $ContentPath
+    $PackagePath = Join-Path $StowPath $Package $NodePath
     Write-Debug("Stowing contents of $PackagePath")
     Get-ChildItem -Path $PackagePath -Name | ForEach-Object {
-        $PackageChildItem = Join-Path $PackagePath $_
-        $TargetChildItem = Join-Path $TargetPath $ContentPath $_
+        $PackageNodePath = Join-Path $PackagePath $_
+        $TargetNodePath = Join-Path $TargetPath $NodePath $_
         Write-Debug "Checking $_"
-        if (!(Test-Path $TargetChildItem)) {
-            Write-Host("Link $TargetChildItem")
+        if (!(Test-Path $TargetNodePath)) {
+            Write-Host("Link $TargetNodePath to $PackageNodePath")
         } else {
-            if ((Test-Path $TargetChildItem -PathType Container) -and
-                    ((Get-Item -Path $TargetChildItem).LinkTarget -ne (Resolve-Path -Path $PackageChildItem))) {
-                Write-Debug "descend into $TargetChildItem"
-                Install-Contents $Package $StowPath $TargetPath (Join-Path $ContentPath $_)
+            if ((Test-Path $TargetNodePath -PathType Container) -and
+                    ((Get-Item -Path $TargetNodePath).LinkTarget -ne (Resolve-Path -Path $PackageNodePath))) {
+                Write-Debug "descend into $TargetNodePath"
+                Install-Contents $Package $StowPath $TargetPath (Join-Path $NodePath $_)
             } else {
-                Write-Error "$TargetChildItem already exists"
+                Write-Error "$TargetNodePath already exists"
             }
         }
     }
