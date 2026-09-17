@@ -82,16 +82,15 @@ function Resolve-BournePath {
 function Install-Package() {
     param(
         [Parameter(Position = 0,
-                ParameterSetName = "Package",
-                Mandatory = $true,
-                ValueFromPipeline = $true,
-                ValueFromPipelineByPropertyName = $true)]
+                Mandatory,
+                ValueFromPipeline,
+                ValueFromPipelineByPropertyName)]
         [String[]]
         $Package
     )
 
     process {
-        $Package | % {
+        $Package | ForEach-Object {
             Write-Debug("Planning stow of package $_...")
         }
     }
