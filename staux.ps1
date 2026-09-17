@@ -81,6 +81,10 @@ function Resolve-BournePath {
 
 function Install-Package() {
     param(
+        [Parameter(Mandatory)]
+        [String[]]
+        $StowPath,
+
         [Parameter(Position = 0,
                 Mandatory,
                 ValueFromPipeline,
@@ -92,6 +96,11 @@ function Install-Package() {
     process {
         $Package | ForEach-Object {
             Write-Debug("Planning stow of package $_...")
+            if (Test-Path -Path (Join-Path $Dir $_) -PathType Container) {
+                Write-Host "> Install contents of $_"
+            } else {
+                Write-Error "$_ is not a package."
+            }
         }
     }
 }
@@ -101,7 +110,7 @@ switch ($PSCmdlet.ParameterSetName)
     'Stow' {
         Write-Verbose "Using action Stow"
         Write-Debug "Planning stow of: $Packages ..."
-        $Packages | Resolve-BournePath | Install-Package
+        $Packages | Resolve-BournePath | Install-Package -StowPath $Dir
     }
     'Delete' {
         Write-Verbose "Using action Delete"
