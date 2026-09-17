@@ -79,6 +79,45 @@ function Resolve-BournePath {
     }
 }
 
+function Install-Contents() {
+    param(
+        [Parameter(Mandatory)]
+        [String[]]
+        $Package,
+
+        [Parameter(Mandatory)]
+        [String[]]
+        $StowPath,
+
+        [Parameter(Mandatory)]
+        [String[]]
+        $TargetPath,
+
+        [Parameter(Mandatory)]
+        [String[]]
+        $ContentPath
+    )
+
+    $PackagePath = Join-Path $StowPath $Package $ContentPath
+    Write-Debug("Stowing contents of $PackagePath")
+    Get-ChildItem -Path $PackagePath -Name | ForEach-Object {
+        $PackageChildItem = Join-Path $PackagePath $_
+        $TargetChildItem = Join-Path $TargetPath $ContentPath $_
+        Write-Debug "Checking $_"
+        if (!(Test-Path $TargetChildItem)) {
+            Write-Host("Link $TargetChildItem")
+        } else {
+            if ((Test-Path $TargetChildItem -PathType Container) -and
+                    ((Get-Item -Path $TargetChildItem).LinkTarget -ne (Resolve-Path -Path $PackageChildItem))) {
+                Write-Debug "descend into $TargetChildItem"
+                Install-Contents $Package $StowPath $TargetPath (Join-Path $ContentPath $_)
+            } else {
+                Write-Error "$TargetChildItem already exists"
+            }
+        }
+    }
+}
+
 function Install-Package() {
     param(
         [Parameter(Mandatory)]
@@ -97,7 +136,7 @@ function Install-Package() {
         $Package | ForEach-Object {
             Write-Debug("Planning stow of package $_...")
             if (Test-Path -Path (Join-Path $Dir $_) -PathType Container) {
-                Write-Host "> Install contents of $_"
+                Install-Contents $_ $Dir $Target '.'
             } else {
                 Write-Error "$_ is not a package."
             }
