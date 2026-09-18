@@ -79,6 +79,34 @@ function Resolve-BournePath {
     }
 }
 
+function New-Link {
+    param(
+        [Parameter(Mandatory)]
+        [String[]]
+        $Path,
+
+        [Parameter(Mandatory)]
+        [String[]]
+        $Value
+    )
+
+    Write-Debug "Linking $Path -> $Value"
+    $ValueType = (Get-Item -Path $Value).GetType().Name
+    Write-Debug "ValueType: $ValueType"
+    $ItemType = switch ($ValueType)
+    {
+        "DirectoryInfo" { "Junction" }
+        "FileInfo" { "HardLink" }
+        Default {
+            Write-Error "Unsupported type: $ValueType" -ErrorAction Stop
+        }
+    }
+    Write-Debug "ItemType: $ItemType"
+    Write-Debug "Resolved path of Value: $(Resolve-Path -Path $Value)"
+    $res = New-Item -ItemType $ItemType -Path $Path -Value (Resolve-Path -Path $Value)
+    "LINK: {0} => {1}" -f $res.FullName, $res.ResolvedTarget
+}
+
 function Install-Contents() {
     param(
         [Parameter(Mandatory)]
@@ -105,7 +133,7 @@ function Install-Contents() {
         $TargetNodePath = Join-Path $TargetPath $NodePath $_
         Write-Debug "Checking $_"
         if (!(Test-Path $TargetNodePath)) {
-            Write-Host("Link $TargetNodePath to $PackageNodePath")
+            New-Link -Path $TargetNodePath -Value $PackageNodePath
         } else {
             if ((Test-Path $TargetNodePath -PathType Container) -and
                     ((Get-Item -Path $TargetNodePath).LinkTarget -ne (Resolve-Path -Path $PackageNodePath))) {
