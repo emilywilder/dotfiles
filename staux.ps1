@@ -112,7 +112,7 @@ function Install-Contents() {
                 Write-Debug "descend into $TargetNodePath"
                 Install-Contents $Package $StowPath $TargetPath (Join-Path $NodePath $_)
             } else {
-                Write-Error "$TargetNodePath already exists"
+                Write-Error "$TargetNodePath already exists" -ErrorAction Stop
             }
         }
     }
