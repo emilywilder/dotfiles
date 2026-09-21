@@ -1,23 +1,42 @@
 #!/usr/bin/env just --justfile
 
+[unix]
 set shell := ["zsh", "-cu"]
+[unix]
 set script-interpreter := ["zsh"]
+
+[windows]
+set shell := ["pwsh.exe", "-NoLogo", "-Command"]
+
+staux := "./staux.ps1 -Debug"
 
 [private]
 default:
     @just --list stow
 
-# Restow packages to $HOME.
+# Restow packages to $HOME. (GNU stow)
 [unix]
 [group("stow")]
 restow +PKGS="*/":
     @stow --verbose --target="${HOME}" --restow {{PKGS}}
 
-# Delete packages from $HOME.
+# Restow packages to $HOME. (staux)
+[windows]
+[group("stow")]
+restow +PKGS="*/":
+    {{staux}} -Verbose -Target "${HOME}" -Restaux {{PKGS}}
+
+# Delete packages from $HOME. (GNU stow)
 [unix]
 [group("stow")]
 delete +PKGS="*/":
     @stow --verbose --target="${HOME}" --delete {{PKGS}}
+
+# Delete packages from $HOME. (staux)
+[windows]
+[group("stow")]
+delete +PKGS="*/":
+    {{staux}} -Verbose -Target "${HOME}" -Delete {{PKGS}}
 
 # Adopt and stow packages to $HOME.
 [unix]
@@ -72,8 +91,11 @@ stale-atuin-config:
 [unix]
 install: fixes restow
 
+# Stow all packages to $HOME.
+[windows]
+install: restow
+
 # Unstow all packages from $HOME.
-[unix]
 uninstall: delete
 
 [unix]
