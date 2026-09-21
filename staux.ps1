@@ -152,6 +152,10 @@ function Install-Package() {
         [String[]]
         $StowPath,
 
+        [Parameter(Mandatory)]
+        [String[]]
+        $TargetPath,
+
         [Parameter(Position = 0,
                 Mandatory,
                 ValueFromPipeline,
@@ -164,7 +168,7 @@ function Install-Package() {
         $Package | ForEach-Object {
             Write-Debug("Planning stow of package $_...")
             if (Test-Path -Path (Join-Path $StowPath $_) -PathType Container) {
-                Install-Contents $_ $StowPath $Target '.'
+                Install-Contents $_ $StowPath $TargetPath '.'
             } else {
                 Write-Error "$_ is not a package."
             }
@@ -177,7 +181,7 @@ switch ($PSCmdlet.ParameterSetName)
     'Stow' {
         Write-Verbose "Using action Stow"
         Write-Debug "Planning stow of: $Packages ..."
-        $Packages | Resolve-BournePath | Install-Package -StowPath $Dir
+        $Packages | Resolve-BournePath | Install-Package -StowPath $Dir -TargetPath $Target
     }
     'Delete' {
         Write-Verbose "Using action Delete"
