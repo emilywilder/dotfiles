@@ -163,8 +163,8 @@ function Install-Package() {
     process {
         $Package | ForEach-Object {
             Write-Debug("Planning stow of package $_...")
-            if (Test-Path -Path (Join-Path $Dir $_) -PathType Container) {
-                Install-Contents $_ $Dir $Target '.'
+            if (Test-Path -Path (Join-Path $StowPath $_) -PathType Container) {
+                Install-Contents $_ $StowPath $Target '.'
             } else {
                 Write-Error "$_ is not a package."
             }
