@@ -15,7 +15,7 @@ default:
     @just --list
 
 [unix]
-install: stow::install git::link-gitconfig
+install: git::install stow::install
 
 [unix]
-uninstall: stow::uninstall git::unlink-gitconfig
+uninstall: stow::uninstall git::uninstall

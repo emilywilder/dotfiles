@@ -47,3 +47,25 @@ update-submodules: initialize-submodules
 [group("repo")]
 sparse-checkout: update-submodules
     @git submodule foreach '$toplevel/sparse-checkout.sh'
+
+# Checkout submodules on initial install.
+[unix]
+[private]
+bootstrap:
+    {{
+        if path_exists(".git/modules") != "true"
+        {
+            "just git sparse-checkout"
+        }
+    }}
+
+# Perform all necessary git operations for dotfiles to function.
+[unix]
+install: bootstrap link-gitconfig
+
+# Perform all necessary git operations for dotfiles to function. WARNING: does not handle submodules!
+[windows]
+install: link-gitconfig
+
+# Remove git specific configurations.
+uninstall: unlink-gitconfig
