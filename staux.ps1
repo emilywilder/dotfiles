@@ -176,12 +176,48 @@ function Install-Package() {
     }
 }
 
+function Install-PackageConfig() {
+    param(
+        [Parameter(Mandatory)]
+        [String[]]
+        $StowPath,
+
+        [Parameter(Mandatory)]
+        [String[]]
+        $TargetPath,
+
+        [Parameter(Position = 0,
+                ParameterSetName = "Package",
+                Mandatory = $true,
+                ValueFromPipeline = $true,
+                ValueFromPipelineByPropertyName = $true)]
+        [String[]]
+        $Package
+    )
+
+    process {
+        $Package | ForEach-Object {
+            $PackageConfig = Join-Path $StowPath $_ ".config" $_ # Stow Dir / Package / .config / Package
+            $TargetConfig = Join-Path $TargetPath ".config" $_   #             Target / .config / Package
+            if (
+                (Test-Path $TargetConfig) -and
+                (Get-Item -Path $TargetConfig).LinkTarget -ne (Resolve-Path -Path $PackageConfig)
+            ) {
+                Write-Error "$TargetConfig already exists!"
+            } else {
+                New-Link -Path $TargetConfig -Value $PackageConfig
+            }
+        }
+    }
+}
+
+
 switch ($PSCmdlet.ParameterSetName)
 {
     'Stow' {
         Write-Verbose "Using action Stow"
         Write-Debug "Planning stow of: $Packages ..."
-        $Packages | Resolve-BournePath | Install-Package -StowPath $Dir -TargetPath $Target
+        $Packages | Resolve-BournePath | Install-PackageConfig -StowPath $Dir -TargetPath $Target
     }
     'Delete' {
         Write-Verbose "Using action Delete"
