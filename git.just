@@ -28,9 +28,16 @@ link-gitconfig:
     New-Item -ItemType HardLink -Path "{{git_local_config}}" -Value "{{platform}}.config"
 
 # Remove localized git config options.
+[unix]
 [working-directory: "git/.config/git"]
 unlink-gitconfig:
-    rm {{git_local_config}}
+    rm -fv {{git_local_config}}
+
+# Remove localized git config options.
+[windows]
+[working-directory: "git/.config/git"]
+unlink-gitconfig:
+    if (Test-Path {{git_local_config}}) { Remove-Item -Path {{git_local_config}} -Verbose }
 
 # Initialize submodules.
 [group("repo")]
