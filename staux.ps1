@@ -107,6 +107,22 @@ function New-Link {
     "LINK: {0} => {1}" -f $res.FullName, $res.ResolvedTarget
 }
 
+function Remove-Link() {
+    param(
+        [Parameter(Mandatory)]
+        [String[]]
+        $Path
+    )
+
+    Write-Debug "Unlinking $Path"
+    try {
+        Remove-Item -Path (Resolve-Path -Path $Path)
+        "UNLINK: {0}" -f $Path
+    } catch {
+        Write-Error "Couldn't remove $Path" -ErrorAction Stop
+    }
+}
+
 function Install-Contents() {
     param(
         [Parameter(Mandatory)]
@@ -211,6 +227,39 @@ function Install-PackageConfig() {
     }
 }
 
+function Delete-PackageConfig() {
+    param(
+        [Parameter(Mandatory)]
+        [String[]]
+        $StowPath,
+
+        [Parameter(Mandatory)]
+        [String[]]
+        $TargetPath,
+
+        [Parameter(Position = 0,
+                ParameterSetName = "Package",
+                Mandatory = $true,
+                ValueFromPipeline = $true,
+                ValueFromPipelineByPropertyName = $true)]
+        [String[]]
+        $Package
+    )
+
+    process {
+        $Package | ForEach-Object {
+            $PackageConfig = Join-Path $StowPath $_ ".config" $_ # Stow Dir / Package / .config / Package
+            $TargetConfig = Join-Path $TargetPath ".config" $_   #             Target / .config / Package
+            if (
+                (Test-Path $TargetConfig) -and
+                    (Get-Item -Path $TargetConfig).LinkTarget -eq (Resolve-Path -Path $PackageConfig)
+            ) {
+                Remove-Link -Path $TargetConfig
+            }
+        }
+    }
+}
+
 
 switch ($PSCmdlet.ParameterSetName)
 {
@@ -221,7 +270,8 @@ switch ($PSCmdlet.ParameterSetName)
     }
     'Delete' {
         Write-Verbose "Using action Delete"
-        throw [System.NotImplementedException] "Not implemented."
+        Write-Debug "Planning delete of: $Packages ..."
+        $Packages | Resolve-BournePath | Delete-PackageConfig -StowPath $Dir -TargetPath $Target
     }
     'Restow' {
         Write-Verbose "Using action Restow"
