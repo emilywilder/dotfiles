@@ -5,11 +5,11 @@ set lists
 set dotenv-load := true
 [unix]
 set shell := ["zsh", "-cu"]
-[unix]
-set script-interpreter := ["zsh"]
-
 [windows]
 set shell := ["pwsh.exe", "-NoLogo", "-Command"]
+
+[unix]
+set script-interpreter := ["zsh"]
 
 staux := "./staux.ps1" + \
     if env('DEBUG', 'false') == "true" { ' -Debug' } else { '' }
