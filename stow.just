@@ -18,6 +18,18 @@ staux := "./staux.ps1" + \
 default:
     @just --list stow
 
+# Stow packages to $HOME.
+[unix]
+[group("stow")]
+stow +PKGS="*/":
+    @stow --verbose --target="${HOME}" --stow {{PKGS}}
+
+# Stow packages to $HOME.
+[windows]
+[group("staux")]
+stow +PKGS="*/":
+    {{staux}} -Verbose -Target "${HOME}" -Stow {{PKGS}}
+
 # Restow packages to $HOME.
 [unix]
 [group("stow")]
