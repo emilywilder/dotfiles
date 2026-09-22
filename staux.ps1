@@ -139,7 +139,10 @@ function Install-Contents() {
 
         [Parameter(Mandatory)]
         [String[]]
-        $NodePath
+        $NodePath,
+
+        [Bool]
+        $Recurse = $false
     )
 
     $PackagePath = Join-Path $StowPath $Package $NodePath
@@ -151,10 +154,12 @@ function Install-Contents() {
         if (!(Test-Path $TargetNodePath)) {
             New-Link -Path $TargetNodePath -Value $PackageNodePath
         } else {
-            if ((Test-Path $TargetNodePath -PathType Container) -and
+            if (
+                $Recurse -and
+                    (Test-Path $TargetNodePath -PathType Container) -and
                     ((Get-Item -Path $TargetNodePath).LinkTarget -ne (Resolve-Path -Path $PackageNodePath))) {
                 Write-Debug "descend into $TargetNodePath"
-                Install-Contents $Package $StowPath $TargetPath (Join-Path $NodePath $_)
+                Install-Contents $Package $StowPath $TargetPath (Join-Path $NodePath $_) -Recurse $Recurse
             } else {
                 Write-Error "$TargetNodePath already exists" -ErrorAction Stop
             }
@@ -177,51 +182,19 @@ function Install-Package() {
                 ValueFromPipeline,
                 ValueFromPipelineByPropertyName)]
         [String[]]
-        $Package
+        $Package,
+
+        [String[]]
+        $NodePath = '.'
     )
 
     process {
         $Package | ForEach-Object {
             Write-Debug("Planning stow of package $_...")
             if (Test-Path -Path (Join-Path $StowPath $_) -PathType Container) {
-                Install-Contents $_ $StowPath $TargetPath '.'
+                Install-Contents $_ $StowPath $TargetPath $NodePath
             } else {
                 Write-Error "$_ is not a package."
-            }
-        }
-    }
-}
-
-function Install-PackageConfig() {
-    param(
-        [Parameter(Mandatory)]
-        [String[]]
-        $StowPath,
-
-        [Parameter(Mandatory)]
-        [String[]]
-        $TargetPath,
-
-        [Parameter(Position = 0,
-                ParameterSetName = "Package",
-                Mandatory = $true,
-                ValueFromPipeline = $true,
-                ValueFromPipelineByPropertyName = $true)]
-        [String[]]
-        $Package
-    )
-
-    process {
-        $Package | ForEach-Object {
-            $PackageConfig = Join-Path $StowPath $_ ".config" $_ # Stow Dir / Package / .config / Package
-            $TargetConfig = Join-Path $TargetPath ".config" $_   #             Target / .config / Package
-            if (
-                (Test-Path $TargetConfig) -and
-                (Get-Item -Path $TargetConfig).LinkTarget -ne (Resolve-Path -Path $PackageConfig)
-            ) {
-                Write-Error "$TargetConfig already exists!" -ErrorAction Stop
-            } else {
-                New-Link -Path $TargetConfig -Value $PackageConfig
             }
         }
     }
@@ -266,7 +239,7 @@ switch ($PSCmdlet.ParameterSetName)
     'Stow' {
         Write-Verbose "Using action Stow"
         Write-Debug "Planning stow of: $Packages ..."
-        $Packages | Resolve-BournePath | Install-PackageConfig -StowPath $Dir -TargetPath $Target
+        $Packages | Resolve-BournePath | Install-Package -StowPath $Dir -TargetPath $Target -NodePath '.config'
     }
     'Delete' {
         Write-Verbose "Using action Delete"
@@ -277,7 +250,7 @@ switch ($PSCmdlet.ParameterSetName)
         Write-Verbose "Using action Restow"
         Write-Debug "Planning restow of: $Packages ..."
         $Packages | Resolve-BournePath | Delete-PackageConfig -StowPath $Dir -TargetPath $Target
-        $Packages | Resolve-BournePath | Install-PackageConfig -StowPath $Dir -TargetPath $Target
+        $Packages | Resolve-BournePath | Install-Package -StowPath $Dir -TargetPath $Target -NodePath '.config'
     }
     Default {
         Write-Error "No supported action specified." -ErrorAction Stop
