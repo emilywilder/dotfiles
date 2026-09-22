@@ -203,7 +203,7 @@ function Install-PackageConfig() {
                 (Test-Path $TargetConfig) -and
                 (Get-Item -Path $TargetConfig).LinkTarget -ne (Resolve-Path -Path $PackageConfig)
             ) {
-                Write-Error "$TargetConfig already exists!"
+                Write-Error "$TargetConfig already exists!" -ErrorAction Stop
             } else {
                 New-Link -Path $TargetConfig -Value $PackageConfig
             }
