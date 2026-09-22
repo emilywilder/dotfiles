@@ -275,7 +275,9 @@ switch ($PSCmdlet.ParameterSetName)
     }
     'Restow' {
         Write-Verbose "Using action Restow"
-        throw [System.NotImplementedException] "Not implemented."
+        Write-Debug "Planning restow of: $Packages ..."
+        $Packages | Resolve-BournePath | Delete-PackageConfig -StowPath $Dir -TargetPath $Target
+        $Packages | Resolve-BournePath | Install-PackageConfig -StowPath $Dir -TargetPath $Target
     }
     Default {
         Write-Error "No supported action specified." -ErrorAction Stop
