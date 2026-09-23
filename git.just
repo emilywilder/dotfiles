@@ -25,7 +25,7 @@ link-gitconfig:
 [windows]
 [working-directory: "git/.config/git"]
 link-gitconfig:
-    New-Item -ItemType HardLink -Path "{{git_local_config}}" -Value "{{platform}}.config"
+    New-Item -ItemType HardLink -Path "{{git_local_config}}" -Value "{{platform}}.config" -Force
 
 # Remove localized git config options.
 [unix]
