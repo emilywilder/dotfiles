@@ -5,6 +5,8 @@ function Set-Readline() {
     ## Use arrow keys to move between words
     Set-PSReadlineKeyHandler -Key Ctrl+LeftArrow -Function BackwardWord
     Set-PSReadlineKeyHandler -Key Ctrl+RightArrow -Function ForwardWord
+    Set-PSReadlineKeyHandler -Key Ctrl+a -Function BeginningOfLine
+    Set-PSReadlineKeyHandler -Key Ctrl+e -Function EndOfLine
 
     ## Set tab completion to emulate ZSH
     ## Source: https://gist.github.com/MeganaD/fe3894b39697da767b8b19b3e0bc047b
