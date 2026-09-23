@@ -21,15 +21,8 @@ function Set-Variables
     Set-Variable -Name "nixos_home" -Value "\\wsl.localhost\NixOS\home\$env:username"
 }
 
-function Set-Hooks
-{
-    ## atuin
-    atuin init powershell | Out-String | Invoke-Expression
-}
-
 if ( [Environment]::UserInteractive )
 {
     Set-Readline
     Set-Variables
-    Set-Hooks
 }
