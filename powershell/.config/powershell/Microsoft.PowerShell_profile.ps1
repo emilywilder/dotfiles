@@ -15,14 +15,7 @@ function Set-Readline
     Set-PSReadLineOption -HistorySearchCursorMovesToEnd
 }
 
-function Set-Variables
-{
-    ## Provide variables for WSL home directories
-    Set-Variable -Name "nixos_home" -Value "\\wsl.localhost\NixOS\home\$env:username"
-}
-
 if ( [Environment]::UserInteractive )
 {
     Set-Readline
-    Set-Variables
 }
