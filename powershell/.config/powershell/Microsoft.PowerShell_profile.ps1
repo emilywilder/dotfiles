@@ -25,12 +25,6 @@ function Set-Hooks
 {
     ## atuin
     atuin init powershell | Out-String | Invoke-Expression
-
-    ## fzf
-    Set-PSReadLineKeyHandler -Key Tab -ScriptBlock { Invoke-FzfTabCompletion }
-    # FIXME: this increases load time and causes CLI content rendering issues
-    # Possibly https://github.com/kelleyma49/PSFzf/issues/380
-    #Set-PsFzfOption -TabCompletionPreviewWindow 'right|down|hidden'
 }
 
 if ( [Environment]::UserInteractive )
