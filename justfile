@@ -1,9 +1,14 @@
 #!/usr/bin/env just --justfile
 
+[unix]
 set shell := ["zsh", "-cu"]
+[windows]
+set shell := ["pwsh.exe", "-NoLogo", "-Command"]
+
+[unix]
+set script-interpreter := ["zsh"]
 
 # Module for GNU stow recipes.
-[unix]
 [group("modules")]
 mod stow
 # Module for git recipes.
@@ -14,8 +19,6 @@ mod git
 default:
     @just --list
 
-[unix]
 install: git::install stow::install
 
-[unix]
 uninstall: stow::uninstall git::uninstall
