@@ -1,5 +1,4 @@
-function Set-Readline
-{
+function Set-Readline() {
     ## Start with emacs readline (this includes ^D exit)
     Set-PSReadLineOption -EditMode Emacs
 
@@ -15,7 +14,6 @@ function Set-Readline
     Set-PSReadLineOption -HistorySearchCursorMovesToEnd
 }
 
-if ( [Environment]::UserInteractive )
-{
+if ( [Environment]::UserInteractive ) {
     Set-Readline
 }
