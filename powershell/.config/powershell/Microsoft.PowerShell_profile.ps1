@@ -16,6 +16,13 @@ function Set-Readline() {
     Set-PSReadLineOption -HistorySearchCursorMovesToEnd
 }
 
+function Set-Hooks() {
+    # OMP
+    $config = "~/.config/omp/catppuccin_frappe.omp.json"
+    oh-my-posh init pwsh --config "$config" | Invoke-Expression
+}
+
 if ( [Environment]::UserInteractive ) {
     Set-Readline
+    Set-Hooks
 }
