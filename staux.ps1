@@ -200,7 +200,7 @@ function Install-Package() {
     }
 }
 
-function Delete-PackageConfig() {
+function Delete-PackageNodePath() {
     param(
         [Parameter(Mandatory)]
         [String]
@@ -209,6 +209,10 @@ function Delete-PackageConfig() {
         [Parameter(Mandatory)]
         [String]
         $TargetPath,
+
+        [Parameter(Mandatory)]
+        [String]
+        $NodePath,
 
         [Parameter(Position = 0,
                 ParameterSetName = "Package",
@@ -221,8 +225,8 @@ function Delete-PackageConfig() {
 
     process {
         $Package | ForEach-Object {
-            $PackageConfig = Join-Path $StowPath $_ ".config" $_ # Stow Dir / Package / .config / Package
-            $TargetConfig = Join-Path $TargetPath ".config" $_   #             Target / .config / Package
+            $PackageConfig = Join-Path $StowPath $_ $NodePath $_ # Stow Dir / Package / NodePath / Package
+            $TargetConfig = Join-Path $TargetPath $NodePath $_   #             Target / NodePath / Package
             if (
                 (Test-Path $TargetConfig) -and
                     (Get-Item -Path $TargetConfig).LinkTarget -eq (Resolve-Path -Path $PackageConfig)
@@ -244,12 +248,12 @@ switch ($PSCmdlet.ParameterSetName)
     'Delete' {
         Write-Verbose "Using action Delete"
         Write-Debug "Planning delete of: $Packages ..."
-        $Packages | Resolve-BournePath | Delete-PackageConfig -StowPath $Dir -TargetPath $Target
+        $Packages | Resolve-BournePath | Delete-PackageNodePath -StowPath $Dir -TargetPath $Target -NodePath '.config'
     }
     'Restow' {
         Write-Verbose "Using action Restow"
         Write-Debug "Planning restow of: $Packages ..."
-        $Packages | Resolve-BournePath | Delete-PackageConfig -StowPath $Dir -TargetPath $Target
+        $Packages | Resolve-BournePath | Delete-PackageNodePath -StowPath $Dir -TargetPath $Target -NodePath '.config'
         $Packages | Resolve-BournePath | Install-Package -StowPath $Dir -TargetPath $Target -NodePath '.config'
     }
     Default {
