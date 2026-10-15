@@ -237,24 +237,27 @@ function Delete-PackageNodePath() {
     }
 }
 
+function Do-Stow {
+    Write-Verbose "Using action Stow"
+    Write-Debug "Planning stow of: $Packages ..."
+    $Packages | Resolve-BournePath | Install-Package -StowPath $Dir -TargetPath $Target -NodePath '.config'
+}
+
+function Do-Delete {
+    Write-Verbose "Using action Delete"
+    Write-Debug "Planning delete of: $Packages ..."
+    $Packages | Resolve-BournePath | Delete-PackageNodePath -StowPath $Dir -TargetPath $Target -NodePath '.config'
+}
 
 switch ($PSCmdlet.ParameterSetName)
 {
-    'Stow' {
-        Write-Verbose "Using action Stow"
-        Write-Debug "Planning stow of: $Packages ..."
-        $Packages | Resolve-BournePath | Install-Package -StowPath $Dir -TargetPath $Target -NodePath '.config'
-    }
-    'Delete' {
-        Write-Verbose "Using action Delete"
-        Write-Debug "Planning delete of: $Packages ..."
-        $Packages | Resolve-BournePath | Delete-PackageNodePath -StowPath $Dir -TargetPath $Target -NodePath '.config'
-    }
+    'Stow' { Do-Stow }
+    'Delete' { Do-Delete }
     'Restow' {
         Write-Verbose "Using action Restow"
         Write-Debug "Planning restow of: $Packages ..."
-        $Packages | Resolve-BournePath | Delete-PackageNodePath -StowPath $Dir -TargetPath $Target -NodePath '.config'
-        $Packages | Resolve-BournePath | Install-Package -StowPath $Dir -TargetPath $Target -NodePath '.config'
+        Do-Delete
+        Do-Stow
     }
     Default {
         Write-Error "No supported action specified." -ErrorAction Stop
