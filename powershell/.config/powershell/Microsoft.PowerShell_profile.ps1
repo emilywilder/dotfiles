@@ -1,3 +1,8 @@
+function Set-Paths() {
+    # Paths
+    $env:Path = 'C:\Program Files (x86)\GnuWin32\bin;' + $env:Path
+}
+
 function Set-Readline() {
     ## Start with emacs readline (this includes ^D exit)
     Set-PSReadLineOption -EditMode Emacs
@@ -23,6 +28,7 @@ function Set-Hooks() {
 }
 
 if ( [Environment]::UserInteractive ) {
+    Set-Paths
     Set-Readline
     Set-Hooks
 }
