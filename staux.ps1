@@ -82,11 +82,11 @@ function Resolve-BournePath {
 function New-Link {
     param(
         [Parameter(Mandatory)]
-        [String[]]
+        [String]
         $Path,
 
         [Parameter(Mandatory)]
-        [String[]]
+        [String]
         $Value
     )
 
@@ -110,7 +110,7 @@ function New-Link {
 function Remove-Link() {
     param(
         [Parameter(Mandatory)]
-        [String[]]
+        [String]
         $Path
     )
 
@@ -126,19 +126,19 @@ function Remove-Link() {
 function Install-Contents() {
     param(
         [Parameter(Mandatory)]
-        [String[]]
+        [String]
         $Package,
 
         [Parameter(Mandatory)]
-        [String[]]
+        [String]
         $StowPath,
 
         [Parameter(Mandatory)]
-        [String[]]
+        [String]
         $TargetPath,
 
         [Parameter(Mandatory)]
-        [String[]]
+        [String]
         $NodePath,
 
         [Bool]
@@ -170,11 +170,11 @@ function Install-Contents() {
 function Install-Package() {
     param(
         [Parameter(Mandatory)]
-        [String[]]
+        [String]
         $StowPath,
 
         [Parameter(Mandatory)]
-        [String[]]
+        [String]
         $TargetPath,
 
         [Parameter(Position = 0,
@@ -184,7 +184,7 @@ function Install-Package() {
         [String[]]
         $Package,
 
-        [String[]]
+        [String]
         $NodePath = '.'
     )
 
@@ -203,11 +203,11 @@ function Install-Package() {
 function Delete-PackageConfig() {
     param(
         [Parameter(Mandatory)]
-        [String[]]
+        [String]
         $StowPath,
 
         [Parameter(Mandatory)]
-        [String[]]
+        [String]
         $TargetPath,
 
         [Parameter(Position = 0,
