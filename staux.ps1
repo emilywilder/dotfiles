@@ -229,6 +229,7 @@ function Delete-PackageNodePath() {
             $TargetConfig = Join-Path $TargetPath $NodePath $_   #             Target / NodePath / Package
             if (
                 (Test-Path $TargetConfig) -and
+                    (Get-Item -Path $TargetConfig).LinkType -eq 'Junction' -and
                     (Get-Item -Path $TargetConfig).LinkTarget -eq (Resolve-Path -Path $PackageConfig)
             ) {
                 Remove-Link -Path $TargetConfig
