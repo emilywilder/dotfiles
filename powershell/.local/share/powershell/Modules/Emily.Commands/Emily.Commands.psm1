@@ -50,4 +50,10 @@ if (Get-Command nvim -ErrorAction SilentlyContinue) { Set-Alias -Name vi -Value 
 # show paths in top-down format
 function paths { $env:Path -split [IO.Path]::PathSeparator }
 
+# use GNU diffutils for diff
+if (Get-Command diff.exe -ErrorAction SilentlyContinue) {
+    Remove-BuiltinAlias diff
+    function diff { diff.exe -u --color @args }
+}
+
 Export-ModuleMember -Function * -Alias *

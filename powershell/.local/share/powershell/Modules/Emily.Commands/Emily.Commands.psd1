@@ -9,6 +9,7 @@
     FunctionsToExport = @(
         'ls', 'l', 'lsd', 'lss', 'lst'
         'paths'
+        'diff'
     )
     AliasesToExport   = @('l', 'vi')
     CmdletsToExport   = @()
