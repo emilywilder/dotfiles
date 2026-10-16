@@ -31,4 +31,7 @@ if ( [Environment]::UserInteractive ) {
     Set-Paths
     Set-Readline
     Set-Hooks
+
+    # My custom command aliases and functions
+    Import-Module Emily.Commands
 }
