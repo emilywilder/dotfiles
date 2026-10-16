@@ -208,7 +208,7 @@ function Install-PackageWithNodePath() {
         $TargetPath,
 
         [Parameter(Mandatory)]
-        [String]
+        [String[]]
         $NodePath,
 
         [Parameter(Position = 0,
@@ -221,16 +221,20 @@ function Install-PackageWithNodePath() {
 
     process {
         $Package | ForEach-Object {
-            Write-Debug("Planning stow of package $_...")
-            if (Test-Path -Path (Join-Path $StowPath $_) -PathType Container) {
-                Write-Debug("Planning stow of node path $NodePath")
-                if (Test-Path -Path (Join-Path $StowPath $_ $NodePath) -PathType Container) {
-                    Install-Contents $_ $StowPath $TargetPath $NodePath
-                } else {
-                    Write-Debug "$NodePath isn't a container within $_."
+            $_Package = $_
+            Write-Debug("Planning stow of package $_Package...")
+            if (Test-Path -Path (Join-Path $StowPath $_Package) -PathType Container) {
+                $NodePath | ForEach-Object {
+                    $_NodePath = $_
+                    Write-Debug("Planning stow of node path $_NodePath")
+                    if (Test-Path -Path (Join-Path $StowPath $_Package $_NodePath) -PathType Container) {
+                        Install-Contents $_Package $StowPath $TargetPath $_NodePath
+                    } else {
+                        Write-Debug "$_NodePath isn't a container within $_Package."
+                    }
                 }
             } else {
-                Write-Error "$_ is not a package."
+                Write-Error "$_Package is not a package."
             }
         }
     }
@@ -247,7 +251,7 @@ function Delete-PackageWithNodePath() {
         $TargetPath,
 
         [Parameter(Mandatory)]
-        [String]
+        [String[]]
         $NodePath,
 
         [Parameter(Position = 0,
@@ -261,29 +265,35 @@ function Delete-PackageWithNodePath() {
 
     process {
         $Package | ForEach-Object {
-            $PackageConfig = Join-Path $StowPath $_ $NodePath $_ # Stow Dir / Package / NodePath / Package
-            $TargetConfig = Join-Path $TargetPath $NodePath $_   #             Target / NodePath / Package
-            if (
-                (Test-Path $TargetConfig) -and
-                    (Get-Item -Path $TargetConfig).LinkType -eq 'Junction' -and
-                    (Get-Item -Path $TargetConfig).LinkTarget -eq (Resolve-Path -Path $PackageConfig)
-            ) {
-                Remove-Link -Path $TargetConfig
+            $_Package = $_
+            $NodePath | ForEach-Object {
+                $_NodePath = $_
+                $PackageConfig = Join-Path $StowPath $_Package $_NodePath $_Package # Stow Dir / Package / NodePath / Package
+                $TargetConfig = Join-Path $TargetPath $_NodePath $_Package          #             Target / NodePath / Package
+                if (
+                    (Test-Path $TargetConfig) -and
+                        (Get-Item -Path $TargetConfig).LinkType -eq 'Junction' -and
+                        (Get-Item -Path $TargetConfig).LinkTarget -eq (Resolve-Path -Path $PackageConfig)
+                ) {
+                    Remove-Link -Path $TargetConfig
+                }
             }
         }
     }
 }
 
+$SupportedNodePaths = '.config'
+
 function Do-Stow {
     Write-Verbose "Using action Stow"
     Write-Debug "Planning stow of: $Packages ..."
-    $Packages | Resolve-BournePath | Install-PackageWithNodePath -StowPath $Dir -TargetPath $Target -NodePath '.config'
+    $Packages | Resolve-BournePath | Install-PackageWithNodePath -StowPath $Dir -TargetPath $Target -NodePath $SupportedNodePaths
 }
 
 function Do-Delete {
     Write-Verbose "Using action Delete"
     Write-Debug "Planning delete of: $Packages ..."
-    $Packages | Resolve-BournePath | Delete-PackageWithNodePath -StowPath $Dir -TargetPath $Target -NodePath '.config'
+    $Packages | Resolve-BournePath | Delete-PackageWithNodePath -StowPath $Dir -TargetPath $Target -NodePath $SupportedNodePaths
 }
 
 switch ($PSCmdlet.ParameterSetName)
