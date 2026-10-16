@@ -44,5 +44,7 @@ if (Get-Command eza -ErrorAction SilentlyContinue) {
     function lst { Get-ChildItem -File @args | Sort-Object LastWriteTime }
 }
 
+# shorthand for nvim
+if (Get-Command nvim -ErrorAction SilentlyContinue) { Set-Alias -Name vi -Value nvim }
 
 Export-ModuleMember -Function * -Alias *
