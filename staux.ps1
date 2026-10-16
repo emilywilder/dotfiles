@@ -223,7 +223,12 @@ function Install-PackageWithNodePath() {
         $Package | ForEach-Object {
             Write-Debug("Planning stow of package $_...")
             if (Test-Path -Path (Join-Path $StowPath $_) -PathType Container) {
-                Install-Contents $_ $StowPath $TargetPath $NodePath
+                Write-Debug("Planning stow of node path $NodePath")
+                if (Test-Path -Path (Join-Path $StowPath $_ $NodePath) -PathType Container) {
+                    Install-Contents $_ $StowPath $TargetPath $NodePath
+                } else {
+                    Write-Debug "$NodePath isn't a container within $_."
+                }
             } else {
                 Write-Error "$_ is not a package."
             }
