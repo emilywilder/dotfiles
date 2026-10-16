@@ -282,7 +282,7 @@ function Delete-PackageWithNodePath() {
     }
 }
 
-$SupportedNodePaths = '.config'
+$SupportedNodePaths = '.config', '.local/share'
 
 function Do-Stow {
     Write-Verbose "Using action Stow"
