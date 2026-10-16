@@ -36,6 +36,10 @@ if (Get-Command eza -ErrorAction SilentlyContinue) {
 
     # long list of directories
     function lsd { Get-ChildItem -Directory @args }
+
+    # long list sorted by size
+    function lss { Get-ChildItem -File @args | Sort-Object Length }
+
 }
 
 
