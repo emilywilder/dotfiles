@@ -10,6 +10,8 @@
         'ls', 'l', 'lsd', 'lss', 'lst'
         'paths'
         'diff'
+        'Format-Size'
+        'dus'
     )
     AliasesToExport   = @('l', 'vi')
     CmdletsToExport   = @()

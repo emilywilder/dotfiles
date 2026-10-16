@@ -56,4 +56,29 @@ if (Get-Command diff.exe -ErrorAction SilentlyContinue) {
     function diff { diff.exe -u --color @args }
 }
 
+# Formats Bytes with human readable prefixes
+# [AI:Claude]
+function Format-Size([long]$Bytes) {
+    switch ($Bytes) {
+        { $_ -ge 1TB } { '{0:N1} TB' -f ($_ / 1TB); break }
+        { $_ -ge 1GB } { '{0:N1} GB' -f ($_ / 1GB); break }
+        { $_ -ge 1MB } { '{0:N1} MB' -f ($_ / 1MB); break }
+        { $_ -ge 1KB } { '{0:N1} KB' -f ($_ / 1KB); break }
+        default        { "$_ B" }
+    }
+}
+
+# disk usage of directory entries, sorted by size
+# [AI:Claude] generated from `du -sh -- * | sort -h`
+function dus {
+    Get-ChildItem @args | ForEach-Object {
+        $bytes = if ($_.PSIsContainer) {
+            (Get-ChildItem $_ -Recurse -File -Force -ErrorAction SilentlyContinue |
+                    Measure-Object Length -Sum).Sum
+        } else { $_.Length }
+        [pscustomobject]@{ Bytes = [long]$bytes; Name = $_.Name }
+    } | Sort-Object Bytes |
+            Select-Object @{ N = 'Size'; E = { Format-Size $_.Bytes } }, Name
+}
+
 Export-ModuleMember -Function * -Alias *
