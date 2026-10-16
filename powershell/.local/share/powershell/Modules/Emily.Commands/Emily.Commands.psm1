@@ -40,6 +40,8 @@ if (Get-Command eza -ErrorAction SilentlyContinue) {
     # long list sorted by size
     function lss { Get-ChildItem -File @args | Sort-Object Length }
 
+    # long list sorted by mtime
+    function lst { Get-ChildItem -File @args | Sort-Object LastWriteTime }
 }
 
 
