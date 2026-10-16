@@ -6,7 +6,10 @@
     Description       = 'My custom command aliases and functions'
     PowerShellVersion = '7.0'
 
-    FunctionsToExport = @('ls', 'l', 'lsd', 'lss', 'lst')
+    FunctionsToExport = @(
+        'ls', 'l', 'lsd', 'lss', 'lst'
+        'paths'
+    )
     AliasesToExport   = @('l', 'vi')
     CmdletsToExport   = @()
     VariablesToExport = @()

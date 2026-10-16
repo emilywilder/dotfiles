@@ -47,4 +47,7 @@ if (Get-Command eza -ErrorAction SilentlyContinue) {
 # shorthand for nvim
 if (Get-Command nvim -ErrorAction SilentlyContinue) { Set-Alias -Name vi -Value nvim }
 
+# show paths in top-down format
+function paths { $env:Path -split [IO.Path]::PathSeparator }
+
 Export-ModuleMember -Function * -Alias *
