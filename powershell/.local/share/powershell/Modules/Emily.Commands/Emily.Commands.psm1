@@ -33,6 +33,9 @@ if (Get-Command eza -ErrorAction SilentlyContinue) {
 
     # quick long list
     Set-Alias -Name l -Value Get-ChildItem
+
+    # long list of directories
+    function lsd { Get-ChildItem -Directory @args }
 }
 
 
