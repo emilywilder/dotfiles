@@ -182,10 +182,41 @@ function Install-Package() {
                 ValueFromPipeline,
                 ValueFromPipelineByPropertyName)]
         [String[]]
-        $Package,
+        $Package
+    )
 
+    process {
+        $Package | ForEach-Object {
+            Write-Debug("Planning stow of package $_...")
+            if (Test-Path -Path (Join-Path $StowPath $_) -PathType Container) {
+                Install-Contents $_ $StowPath $TargetPath '.'
+            } else {
+                Write-Error "$_ is not a package."
+            }
+        }
+    }
+}
+
+function Install-PackageWithNodePath() {
+    param(
+        [Parameter(Mandatory)]
         [String]
-        $NodePath = '.'
+        $StowPath,
+
+        [Parameter(Mandatory)]
+        [String]
+        $TargetPath,
+
+        [Parameter(Mandatory)]
+        [String]
+        $NodePath,
+
+        [Parameter(Position = 0,
+                Mandatory,
+                ValueFromPipeline,
+                ValueFromPipelineByPropertyName)]
+        [String[]]
+        $Package
     )
 
     process {
@@ -200,7 +231,7 @@ function Install-Package() {
     }
 }
 
-function Delete-PackageNodePath() {
+function Delete-PackageWithNodePath() {
     param(
         [Parameter(Mandatory)]
         [String]
@@ -241,13 +272,13 @@ function Delete-PackageNodePath() {
 function Do-Stow {
     Write-Verbose "Using action Stow"
     Write-Debug "Planning stow of: $Packages ..."
-    $Packages | Resolve-BournePath | Install-Package -StowPath $Dir -TargetPath $Target -NodePath '.config'
+    $Packages | Resolve-BournePath | Install-PackageWithNodePath -StowPath $Dir -TargetPath $Target -NodePath '.config'
 }
 
 function Do-Delete {
     Write-Verbose "Using action Delete"
     Write-Debug "Planning delete of: $Packages ..."
-    $Packages | Resolve-BournePath | Delete-PackageNodePath -StowPath $Dir -TargetPath $Target -NodePath '.config'
+    $Packages | Resolve-BournePath | Delete-PackageWithNodePath -StowPath $Dir -TargetPath $Target -NodePath '.config'
 }
 
 switch ($PSCmdlet.ParameterSetName)
