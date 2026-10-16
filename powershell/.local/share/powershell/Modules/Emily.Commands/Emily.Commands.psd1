@@ -7,7 +7,7 @@
     PowerShellVersion = '7.0'
 
     FunctionsToExport = @('ls', 'l', 'lsd', 'lss', 'lst')
-    AliasesToExport   = @()
+    AliasesToExport   = @('l')
     CmdletsToExport   = @()
     VariablesToExport = @()
 }

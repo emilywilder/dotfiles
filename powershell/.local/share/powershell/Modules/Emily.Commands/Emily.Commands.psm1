@@ -28,6 +28,11 @@ if (Get-Command eza -ErrorAction SilentlyContinue) {
 
     # long list sorted by mtime
     function lst { l --sort=date --color-scale=age @args }
+} else {
+    # PowerShell approximations
+
+    # quick long list
+    Set-Alias -Name l -Value Get-ChildItem
 }
 
 
