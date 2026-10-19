@@ -2,6 +2,11 @@
 # :: Configuration for login shells
 # > path variables
 
+# update $path to be unique ( array-tied-special -> array-tied-unique-special )
+typeset -U path
+# set $_path to be array-unique
+typeset -aU _path
+
 # home bin
 _path=(
     # home/bin
