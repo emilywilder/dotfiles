@@ -1,0 +1,19 @@
+#!/usr/bin/env zsh
+
+INSTALLATION_DIR="${HOME}/Applications"
+JETBRAINS_APPS=(
+	'IntelliJ IDEA.app'
+	'CLion.app'
+	'DataGrip.app'
+	'DataSpell.app'
+	'PyCharm.app'
+	'RustRover.app'
+	'WebStorm.app'
+)
+
+for app in ${JETBRAINS_APPS}; do
+	echo -n "${app} "
+	find "${INSTALLATION_DIR:?}/${app:?}" -name "*Promo*.jar" \
+		\( -exec mv {} {}.bak \; -and -exec echo -n . \; \)
+	echo
+done
