@@ -10,3 +10,6 @@
 # -F or --quit-if-one-screen
 # -R or --RAW-CONTROL-CHARS
 $env:LESS = '-FR'
+
+# ask-copilot
+$env:ASK_COPILOT_OP_REF = "op://Private/GitHub Copilot Requests/token"
