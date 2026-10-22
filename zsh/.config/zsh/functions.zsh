@@ -19,7 +19,7 @@ fpath+=($ZSH_FUNCTIONS_BASEDIR)
     readonly functions_linux=()
     readonly functions_macos=(attachiso dequarantine plist2jq open jetbrains-remove-ads)
     # programs
-    readonly functions_git=(packsources gittree jetbrains-get-gitignore)
+    readonly functions_git=(packsources gittree jetbrains-get-gitignore git-pack-untracked-files)
     readonly functions_nix=(nix-deps nix-get-pname nix-get-flake-outpaths nix-search-names ns)
     readonly functions_python=(python_ensurepip pip_updateall)
     readonly functions_magick=(image2ico)

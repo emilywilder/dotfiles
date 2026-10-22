@@ -1,0 +1,21 @@
+#!/usr/bin/env zsh
+# git-pack-untracked-files
+
+zmodload zsh/datetime
+
+die() { print -u2 "Error: $*"; exit 1 }
+
+git rev-parse --git-dir >/dev/null 2>&1 || die "not inside a git repository."
+
+host=${${HOST:-$(hostname)}%%.*}
+repo=${$(git rev-parse --show-toplevel):t}
+desc="untracked-files"
+timestamp="$(strftime %Y%m%d-%H%M%S $EPOCHSECONDS)"
+archive=${host}-${repo}-${desc}-${timestamp}.tar.xz
+
+[[ -e $archive ]] && die "$archive already exists; not overwriting."
+
+(git ls-files --others --exclude-standard -z | tar -cJvf $archive --null -T -) || die "failed to create $archive"
+
+print "Compressed to $archive"
+
