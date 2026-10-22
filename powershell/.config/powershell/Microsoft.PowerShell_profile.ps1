@@ -7,6 +7,7 @@ function Test-InteractiveShell() { [bool](Get-Module PSReadLine) }
 function Set-Paths() {
     # Paths
     $env:Path = 'C:\Program Files (x86)\GnuWin32\bin;' + $env:Path
+    $env:Path = (Join-Path $HOME .local share powershell Scripts) + ';' + $env:Path
 }
 
 function Set-Readline() {
