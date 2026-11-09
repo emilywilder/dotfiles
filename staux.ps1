@@ -145,8 +145,8 @@ function Install-Contents() {
         [String]
         $NodePath,
 
-        [Bool]
-        $Recurse = $false
+        [Switch]
+        $Recurse
     )
 
     $PackagePath = Join-Path $StowPath $Package $NodePath
@@ -167,7 +167,7 @@ function Install-Contents() {
                     ((Get-Item -Path $TargetNodePath).LinkTarget -ne (Resolve-Path -Path $PackageNodePath))) {
                 # it's a directory we don't own -> descend
                 Write-Debug "descend into $TargetNodePath"
-                Install-Contents $Package $StowPath $TargetPath (Join-Path $NodePath $_) -Recurse $Recurse
+                Install-Contents $Package $StowPath $TargetPath (Join-Path $NodePath $_) -Recurse:$Recurse
             } else {
                 # otherwise -> fail
                 Write-Error "$TargetNodePath already exists" -ErrorAction Stop
@@ -198,7 +198,7 @@ function Install-Package() {
         $Package | ForEach-Object {
             Write-Debug("Planning stow of package $_...")
             if (Test-Path -Path (Join-Path $StowPath $_) -PathType Container) {
-                Install-Contents $_ $StowPath $TargetPath '.' -Recurse $true
+                Install-Contents $_ $StowPath $TargetPath '.' -Recurse
             } else {
                 Write-Error "$_ is not a package."
             }
@@ -224,8 +224,8 @@ function Delete-Contents() {
         [String]
         $NodePath,
 
-        [Bool]
-        $Recurse = $false
+        [Switch]
+        $Recurse
     )
 
     $PackagePath = Join-Path $StowPath $Package $NodePath
@@ -246,7 +246,7 @@ function Delete-Contents() {
                 if ($Recurse -and (Test-Path $TargetNodePath -PathType Container)) {
                     # it's a directory & recurse -> recurse
                     Write-Debug "descend into $TargetNodePath"
-                    Delete-Contents $Package $StowPath $TargetPath (Join-Path $NodePath $_) -Recurse $Recurse
+                    Delete-Contents $Package $StowPath $TargetPath (Join-Path $NodePath $_) -Recurse:$Recurse
                 }
                     # otherwise -> nothing
             }
@@ -277,7 +277,7 @@ function Delete-Package() {
         $Package | ForEach-Object {
             Write-Debug("Planning delete of package $_...")
             if (Test-Path -Path (Join-Path $StowPath $_) -PathType Container) {
-                Delete-Contents $_ $StowPath $TargetPath '.' -Recurse $true
+                Delete-Contents $_ $StowPath $TargetPath '.' -Recurse
             } else {
                 Write-Error "$_ is not a package."
             }
