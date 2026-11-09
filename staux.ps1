@@ -193,7 +193,7 @@ function Install-Package() {
         $Package | ForEach-Object {
             Write-Debug("Planning stow of package $_...")
             if (Test-Path -Path (Join-Path $StowPath $_) -PathType Container) {
-                Install-Contents $_ $StowPath $TargetPath '.'
+                Install-Contents $_ $StowPath $TargetPath '.' -Recurse $true
             } else {
                 Write-Error "$_ is not a package."
             }
