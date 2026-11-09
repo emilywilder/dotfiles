@@ -249,6 +249,55 @@ function Install-PackageWithNodePath() {
     }
 }
 
+function Delete-Contents() {
+    param(
+        [Parameter(Mandatory)]
+        [String]
+        $Package,
+
+        [Parameter(Mandatory)]
+        [String]
+        $StowPath,
+
+        [Parameter(Mandatory)]
+        [String]
+        $TargetPath,
+
+        [Parameter(Mandatory)]
+        [String]
+        $NodePath,
+
+        [Bool]
+        $Recurse = $false
+    )
+
+    $PackagePath = Join-Path $StowPath $Package $NodePath
+    Write-Debug("Deleting contents of $PackagePath")
+    Get-ChildItem -Path $PackagePath -Name | ForEach-Object {
+        $PackageNodePath = Join-Path $PackagePath $_
+        $TargetNodePath = Join-Path $TargetPath $NodePath $_
+        Write-Debug "Checking $TargetNodePath"
+        # path exists? -> unlink | recurse | nothing
+        if (Test-Path $TargetNodePath) {
+            # path exists -> unlink | recurse | nothing
+            if ((Get-Item -Path $TargetNodePath).LinkTarget -eq (Resolve-Path -Path $PackageNodePath)) {
+                # we own it -> unlink
+                Write-Debug "Removing $TargetNodePath"
+                Remove-Link -Path $TargetNodePath
+            } else {
+                # we don't own it -> recurse | nothing
+                if ($Recurse -and (Test-Path $TargetNodePath -PathType Container)) {
+                    # it's a directory & recurse -> recurse
+                    Write-Debug "descend into $TargetNodePath"
+                    Delete-Contents $Package $StowPath $TargetPath (Join-Path $NodePath $_) -Recurse $Recurse
+                }
+                    # otherwise -> nothing
+            }
+        }
+            # path doesn't exist -> nothing
+    }
+}
+
 function Delete-PackageWithNodePath() {
     param(
         [Parameter(Mandatory)]
