@@ -1,5 +1,6 @@
 [CmdletBinding()]
 Param (
+    # original stow params
     $Dir = ".",             # stow directory
     $Target = "$Dir/..",    # target directory
     [Parameter(ParameterSetName='Stow')]
@@ -9,7 +10,9 @@ Param (
     [Parameter(ParameterSetName='Delete')]
     [Switch]$Delete,
     [Parameter(Mandatory, ValueFromRemainingArguments, Position=0)]
-    [String[]]$Packages     # package(s)
+    [String[]]$Packages,     # package(s)
+    # pwsh specific params
+    [Switch]$WhatIf
 )
 
 Write-Debug "Dir: ${Dir}"
@@ -18,6 +21,7 @@ Write-Debug "Stow: ${Stow}"
 Write-Debug "Restow: ${Restow}"
 Write-Debug "Delete: ${Delete}"
 Write-Debug "Packages: ${Packages}"
+Write-Debug "WhatIf: ${WhatIf}"
 
 function Resolve-BournePath {
     <#
@@ -103,8 +107,8 @@ function New-Link {
     }
     Write-Debug "ItemType: $ItemType"
     Write-Debug "Resolved path of Value: $(Resolve-Path -Path $Value)"
-    $res = New-Item -ItemType $ItemType -Path $Path -Value (Resolve-Path -Path $Value)
-    "LINK: {0} => {1}" -f $res.FullName, $res.ResolvedTarget
+    $res = New-Item -ItemType $ItemType -Path $Path -Value (Resolve-Path -Path $Value) -WhatIf:$WhatIf
+    if (-not $WhatIf) { "LINK: {0} => {1}" -f $res.FullName, $res.ResolvedTarget }
 }
 
 function Remove-Link() {
@@ -116,8 +120,8 @@ function Remove-Link() {
 
     Write-Debug "Unlinking $Path"
     try {
-        Remove-Item -Path (Resolve-Path -Path $Path)
-        "UNLINK: {0}" -f $Path
+        Remove-Item -Path (Resolve-Path -Path $Path) -WhatIf:$WhatIf
+        if (-not $WhatIf) { "UNLINK: {0}" -f $Path }
     } catch {
         Write-Error "Couldn't remove $Path" -ErrorAction Stop
     }
