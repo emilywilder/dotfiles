@@ -206,49 +206,6 @@ function Install-Package() {
     }
 }
 
-function Install-PackageWithNodePath() {
-    param(
-        [Parameter(Mandatory)]
-        [String]
-        $StowPath,
-
-        [Parameter(Mandatory)]
-        [String]
-        $TargetPath,
-
-        [Parameter(Mandatory)]
-        [String[]]
-        $NodePath,
-
-        [Parameter(Position = 0,
-                Mandatory,
-                ValueFromPipeline,
-                ValueFromPipelineByPropertyName)]
-        [String[]]
-        $Package
-    )
-
-    process {
-        $Package | ForEach-Object {
-            $_Package = $_
-            Write-Debug("Planning stow of package $_Package...")
-            if (Test-Path -Path (Join-Path $StowPath $_Package) -PathType Container) {
-                $NodePath | ForEach-Object {
-                    $_NodePath = $_
-                    Write-Debug("Planning stow of node path $_NodePath")
-                    if (Test-Path -Path (Join-Path $StowPath $_Package $_NodePath) -PathType Container) {
-                        Install-Contents $_Package $StowPath $TargetPath $_NodePath
-                    } else {
-                        Write-Debug "$_NodePath isn't a container within $_Package."
-                    }
-                }
-            } else {
-                Write-Error "$_Package is not a package."
-            }
-        }
-    }
-}
-
 function Delete-Contents() {
     param(
         [Parameter(Mandatory)]
@@ -327,50 +284,6 @@ function Delete-Package() {
         }
     }
 }
-
-function Delete-PackageWithNodePath() {
-    param(
-        [Parameter(Mandatory)]
-        [String]
-        $StowPath,
-
-        [Parameter(Mandatory)]
-        [String]
-        $TargetPath,
-
-        [Parameter(Mandatory)]
-        [String[]]
-        $NodePath,
-
-        [Parameter(Position = 0,
-                ParameterSetName = "Package",
-                Mandatory = $true,
-                ValueFromPipeline = $true,
-                ValueFromPipelineByPropertyName = $true)]
-        [String[]]
-        $Package
-    )
-
-    process {
-        $Package | ForEach-Object {
-            $_Package = $_
-            $NodePath | ForEach-Object {
-                $_NodePath = $_
-                $PackageConfig = Join-Path $StowPath $_Package $_NodePath $_Package # Stow Dir / Package / NodePath / Package
-                $TargetConfig = Join-Path $TargetPath $_NodePath $_Package          #             Target / NodePath / Package
-                if (
-                    (Test-Path $TargetConfig) -and
-                        (Get-Item -Path $TargetConfig).LinkType -eq 'Junction' -and
-                        (Get-Item -Path $TargetConfig).LinkTarget -eq (Resolve-Path -Path $PackageConfig)
-                ) {
-                    Remove-Link -Path $TargetConfig
-                }
-            }
-        }
-    }
-}
-
-$SupportedNodePaths = '.config', '.local/share'
 
 function Do-Stow {
     Write-Verbose "Using action Stow"
