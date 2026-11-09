@@ -155,16 +155,21 @@ function Install-Contents() {
         $PackageNodePath = Join-Path $PackagePath $_
         $TargetNodePath = Join-Path $TargetPath $NodePath $_
         Write-Debug "Checking $_"
+        # path exists? -> link | descend | fail
         if (!(Test-Path $TargetNodePath)) {
+            # path doesn't exist -> link
             New-Link -Path $TargetNodePath -Value $PackageNodePath
         } else {
+            # path exists ->  descend | fail
             if (
                 $Recurse -and
                     (Test-Path $TargetNodePath -PathType Container) -and
                     ((Get-Item -Path $TargetNodePath).LinkTarget -ne (Resolve-Path -Path $PackageNodePath))) {
+                # it's a directory we don't own -> descend
                 Write-Debug "descend into $TargetNodePath"
                 Install-Contents $Package $StowPath $TargetPath (Join-Path $NodePath $_) -Recurse $Recurse
             } else {
+                # otherwise -> fail
                 Write-Error "$TargetNodePath already exists" -ErrorAction Stop
             }
         }
