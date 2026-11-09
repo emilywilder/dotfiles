@@ -298,6 +298,36 @@ function Delete-Contents() {
     }
 }
 
+function Delete-Package() {
+    param(
+        [Parameter(Mandatory)]
+        [String]
+        $StowPath,
+
+        [Parameter(Mandatory)]
+        [String]
+        $TargetPath,
+
+        [Parameter(Position = 0,
+                Mandatory,
+                ValueFromPipeline,
+                ValueFromPipelineByPropertyName)]
+        [String[]]
+        $Package
+    )
+
+    process {
+        $Package | ForEach-Object {
+            Write-Debug("Planning delete of package $_...")
+            if (Test-Path -Path (Join-Path $StowPath $_) -PathType Container) {
+                Delete-Contents $_ $StowPath $TargetPath '.' -Recurse $true
+            } else {
+                Write-Error "$_ is not a package."
+            }
+        }
+    }
+}
+
 function Delete-PackageWithNodePath() {
     param(
         [Parameter(Mandatory)]
