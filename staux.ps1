@@ -375,13 +375,13 @@ $SupportedNodePaths = '.config', '.local/share'
 function Do-Stow {
     Write-Verbose "Using action Stow"
     Write-Debug "Planning stow of: $Packages ..."
-    $Packages | Resolve-BournePath | Install-PackageWithNodePath -StowPath $Dir -TargetPath $Target -NodePath $SupportedNodePaths
+    $Packages | Resolve-BournePath | Install-Package -StowPath $Dir -TargetPath $Target
 }
 
 function Do-Delete {
     Write-Verbose "Using action Delete"
     Write-Debug "Planning delete of: $Packages ..."
-    $Packages | Resolve-BournePath | Delete-PackageWithNodePath -StowPath $Dir -TargetPath $Target -NodePath $SupportedNodePaths
+    $Packages | Resolve-BournePath | Delete-Package -StowPath $Dir -TargetPath $Target
 }
 
 switch ($PSCmdlet.ParameterSetName)
