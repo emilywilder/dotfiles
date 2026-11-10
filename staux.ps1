@@ -127,6 +127,28 @@ function Remove-Link() {
     }
 }
 
+function Test-TargetPath() {
+    param(
+        [Parameter(Mandatory)]
+        [String]
+        $SourcePath,
+
+        [Parameter(Mandatory)]
+        [String]
+        $TargetPath
+    )
+
+    switch ((Get-Item -Path $TargetPath).LinkType) {
+        "Junction" {
+            (Get-Item -Path $TargetPath).LinkTarget -eq (Resolve-Path -Path $SourcePath)
+        }
+        "HardLink" {
+            (fsutil hardlink list $TargetPath).Contains((Split-Path -NoQualifier -Resolve $SourcePath))
+        }
+        Default { $false }
+    }
+}
+
 function Install-Contents() {
     param(
         [Parameter(Mandatory)]
@@ -164,7 +186,8 @@ function Install-Contents() {
             if (
                 $Recurse -and
                     (Test-Path $TargetNodePath -PathType Container) -and
-                    ((Get-Item -Path $TargetNodePath).LinkTarget -ne (Resolve-Path -Path $PackageNodePath))) {
+                    (!(Test-TargetPath -TargetPath $TargetNodePath -SourcePath $PackageNodePath))
+            ) {
                 # it's a directory we don't own -> descend
                 Write-Debug "descend into $TargetNodePath"
                 Install-Contents $Package $StowPath $TargetPath (Join-Path $NodePath $_) -Recurse:$Recurse
@@ -237,7 +260,7 @@ function Delete-Contents() {
         # path exists? -> unlink | recurse | nothing
         if (Test-Path $TargetNodePath) {
             # path exists -> unlink | recurse | nothing
-            if ((Get-Item -Path $TargetNodePath).LinkTarget -eq (Resolve-Path -Path $PackageNodePath)) {
+            if (Test-TargetPath -TargetPath $TargetNodePath -SourcePath $PackageNodePath) {
                 # we own it -> unlink
                 Write-Debug "Removing $TargetNodePath"
                 Remove-Link -Path $TargetNodePath
